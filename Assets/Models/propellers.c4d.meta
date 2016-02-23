@@ -14,6 +14,7 @@ ModelImporter:
     100012: Cylinder
     100014: Disc
     100016: //RootNode
+    100018: Cinema4D_Editor
     400000: Blade
     400002: Blade_1
     400004: Blade_2
@@ -23,6 +24,7 @@ ModelImporter:
     400012: Cylinder
     400014: Disc
     400016: //RootNode
+    400018: Cinema4D_Editor
     2300000: Blade
     2300002: Blade_1
     2300004: Blade_2

@@ -82,8 +82,10 @@ public class balloon_base : MonoBehaviour {
             }
         }
     }
+
     IEnumerator dieAnimation() {
         yield return new WaitForSeconds(5f);
+        
         //GameObject g = Instantiate(respawn, LastCheckpoint, Quaternion.Euler(new Vector3(0,0,0))) as GameObject;
         // cameraFollow.S.target = g.transform.GetChild(0).gameObject;
         //  Destroy(this.transform.parent.gameObject);
@@ -168,7 +170,26 @@ public class balloon_base : MonoBehaviour {
 
     }
 
+    Coroutine boostingcr;
+
+    IEnumerator getboost()
+    {
+        horT = horizontalThrustBoosted;
+        speedboost.enableEmission = true;
+        yield return new WaitForSeconds(3f);
+        horT = horizontalThrust;
+        speedboost.enableEmission = false;
+    }
+
     public void OnTriggerEnter(Collider coll) {
+        if(coll.tag == "Boost")
+        {
+            if(boostingcr != null)
+            {
+                StopCoroutine(boostingcr);
+            }
+            boostingcr = StartCoroutine(getboost());
+        }
         if (coll.tag == "Pickups") {
             float dice = Random.value;
             if (dice < 0.33) {

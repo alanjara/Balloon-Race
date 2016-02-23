@@ -4,7 +4,17 @@ timeCreated: 1456185937
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    100000: Cinema4D_Editor
+    100002: Disc
+    100004: //RootNode
+    400000: Cinema4D_Editor
+    400002: Disc
+    400004: //RootNode
+    2300000: Disc
+    3300000: Disc
+    4300000: Disc
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0

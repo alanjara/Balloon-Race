@@ -10,11 +10,15 @@ ModelImporter:
     100004: Handle1
     100006: Handle2
     100008: Topper
+    100010: Cinema4D_Editor
+    100012: Null
     400000: Basket
     400002: //RootNode
     400004: Handle1
     400006: Handle2
     400008: Topper
+    400010: Cinema4D_Editor
+    400012: Null
     2300000: Basket
     2300002: Handle1
     2300004: Handle2
