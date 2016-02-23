@@ -791,6 +791,10 @@ Prefab:
       propertyPath: m_Drag
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 2398758, guid: 7846dda53bd2eb346a50f6546e8ea403, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27e8aa4e3c7ffca46befb1093ac7e4b4, type: 2}
     m_RemovedComponents:
     - {fileID: 11404082, guid: 7846dda53bd2eb346a50f6546e8ea403, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7846dda53bd2eb346a50f6546e8ea403, type: 2}
@@ -2168,7 +2172,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ba61f247cbf50f24a90e327e68ea06e5, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: ba61f247cbf50f24a90e327e68ea06e5, type: 3}
       propertyPath: m_Materials.Array.data[0]
