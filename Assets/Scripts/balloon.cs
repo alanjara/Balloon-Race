@@ -7,9 +7,12 @@ public class balloon : MonoBehaviour
     public float verticalThrust;
     public float horizontalThrust;
     public float horizontalThrustBoosted;
+    public float risingForce;
     public bool mouse;
     public float v, h;
     float horT, verT;
+    Vector3 size;
+    public float expansion;
     public Vector3 LastCheckpoint = new Vector3(-5f, 5f, -22f);
 
     // Use this for initialization
@@ -19,6 +22,7 @@ public class balloon : MonoBehaviour
         horT = horizontalThrust;
         verT = verticalThrust;
         speedboost.enableEmission = false;
+        size = transform.localScale;
     }
     public bool deadBaloon = false;
     public ParticleSystem flameup;
@@ -78,20 +82,30 @@ public class balloon : MonoBehaviour
         {
             return;
         }
+        /*
+        Vector3 modifier = new Vector3( rb.velocity.y *size.x, size.y, rb.velocity.y*size.z);
+        transform.localScale = Vector3.Lerp(transform.localScale, modifier,Time.deltaTime);
+        */
+
+        rb.AddForceAtPosition(Vector3.up * risingForce, transform.up + transform.position, ForceMode.Acceleration);
         if (mouse)
         {
-            rb.AddRelativeForce(Vector3.forward * verticalThrust, ForceMode.Acceleration);
+            rb.AddForceAtPosition(Vector3.up * verticalThrust, transform.up+transform.position,ForceMode.Acceleration);
             flameup.enableEmission = true;
         }
         else
         {
             flameup.enableEmission = false;
         }
-        if (v > 0) rb.AddRelativeForce(Vector3.up * -horT, ForceMode.Acceleration);
-        else if (v < 0) rb.AddRelativeForce(Vector3.up * horT, ForceMode.Acceleration);
-        if (h > 0) rb.AddRelativeForce(Vector3.right * horT, ForceMode.Acceleration);
-        else if (h < 0) rb.AddRelativeForce(Vector3.right * -horT, ForceMode.Acceleration);
-        AlignUpwards();
+        if (v > 0)
+            rb.AddForceAtPosition(Vector3.forward * horT,  transform.position, ForceMode.Acceleration);
+        else if (v < 0)
+            rb.AddForceAtPosition(Vector3.forward * -horT,  transform.position, ForceMode.Acceleration);
+        if (h > 0)
+            rb.AddForceAtPosition(Vector3.right * horT,  transform.position, ForceMode.Acceleration);
+        else if (h < 0)
+            rb.AddForceAtPosition(Vector3.right * -horT,  transform.position, ForceMode.Acceleration);
+       // AlignUpwards();
     }
 
     // Update is called once per frame
@@ -99,7 +113,7 @@ public class balloon : MonoBehaviour
     {
         mouse = Input.GetMouseButton(0);
         //else
-        //rb.AddRelativeForce (-Vector3.forward / 10f, ForceMode.Force);
+        //rb.AddForceAtPosition (-Vector3.forward / 10f, ForceMode.Force);
         //transform.position = Vector3.Lerp (transform.position, transform.position - Vector3.up * .01f, Time.deltaTime);
         v = Input.GetAxis("Vertical");
         h = Input.GetAxis("Horizontal");
