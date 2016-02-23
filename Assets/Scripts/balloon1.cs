@@ -12,7 +12,7 @@ public class balloon1 : balloon_base
         //transform.position = Vector3.Lerp (transform.position, transform.position - Vector3.up * .01f, Time.deltaTime);
         v = Input.GetAxis("Vertical1");
         h = Input.GetAxis("Horizontal1");
-        fire = Input.GetKeyDown(KeyCode.F);
+        fire = Input.GetKeyDown(KeyCode.RightControl);
 
     }
 }

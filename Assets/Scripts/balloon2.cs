@@ -12,5 +12,6 @@ public class balloon2 : balloon_base
         v = Input.GetAxis("Vertical2");
         h = Input.GetAxis("Horizontal2");
 
+        fire = Input.GetKeyDown(KeyCode.LeftControl);
     }
 }

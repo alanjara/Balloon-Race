@@ -7,6 +7,8 @@ TagManager:
   - Terrain
   - Dangerous
   - Boost
+  - Fire
+  - Pickups
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - 
   - Basket
   - Balloon
-  - 
+  - FireLayer
   - 
   - 
   - 
