@@ -2496,17 +2496,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76827a1552cc83343b2ff13c63da0814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firebolt: {fileID: 0}
-  spawn: {fileID: 0}
-  wind_wave: {fileID: 0}
   verticalThrust: 30
   horizontalThrust: 10
-  up: 0
+  horizontalThrustBoosted: 0
+  risingForce: 0
+  mouse: 0
   v: 0
   h: 0
+  expansion: 0
+  max_height_modifier: 300
   LastCheckpoint: {x: -5, y: 5, z: -22}
+  deadBaloon: 0
   flameup: {fileID: 1162424962}
+  speedboost: {fileID: 0}
   bleed: {fileID: 113984, guid: 3046341e43796774ca8b6f684b4baa66, type: 2}
+  minilightning: {fileID: 0}
   respawn: {fileID: 100854, guid: a9380837f73c5a74980716926cc02957, type: 2}
 --- !u!136 &865512659
 CapsuleCollider:
@@ -2579,7 +2583,7 @@ Transform:
   m_PrefabParentObject: {fileID: 497164, guid: a9380837f73c5a74980716926cc02957, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 865512657}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.75, y: 5.67, z: -22.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4982,7 +4986,7 @@ Transform:
   m_PrefabParentObject: {fileID: 497164, guid: a9380837f73c5a74980716926cc02957, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2046652482}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.03, y: 4.93, z: -22.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

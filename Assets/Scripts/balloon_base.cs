@@ -20,6 +20,8 @@ public class balloon_base : MonoBehaviour
     protected bool fire;
     public float verticalThrust;
     public float horizontalThrust;
+    public float horizontalThrustBoosted;
+    public float risingForce;
     public float up;
     public float v, h;
     protected PowerUp powerup;
