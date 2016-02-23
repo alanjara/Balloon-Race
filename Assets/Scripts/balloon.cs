@@ -8,16 +8,20 @@ public class balloon : MonoBehaviour
     public float horizontalThrust;
     public float horizontalThrustBoosted;
     public float risingForce;
+
     public bool mouse;
     public float v, h;
+    float floatForce;
     float horT, verT;
     Vector3 size;
     public float expansion;
+    public float max_height_modifier=300;
     public Vector3 LastCheckpoint = new Vector3(-5f, 5f, -22f);
 
     // Use this for initialization
     void Start()
     {
+        floatForce = risingForce;
         rb = GetComponent<Rigidbody>();
         horT = horizontalThrust;
         verT = verticalThrust;
@@ -86,11 +90,14 @@ public class balloon : MonoBehaviour
         Vector3 modifier = new Vector3( rb.velocity.y *size.x, size.y, rb.velocity.y*size.z);
         transform.localScale = Vector3.Lerp(transform.localScale, modifier,Time.deltaTime);
         */
-
-        rb.AddForceAtPosition(Vector3.up * risingForce, transform.up + transform.position, ForceMode.Acceleration);
+        if (floatForce > risingForce)
+            floatForce -= verticalThrust * Time.deltaTime;
+        if (floatForce < risingForce)
+            floatForce = risingForce;
         if (mouse)
         {
-            rb.AddForceAtPosition(Vector3.up * verticalThrust, transform.up+transform.position,ForceMode.Acceleration);
+           // rb.AddForceAtPosition(Vector3.up * verticalThrust, transform.up+transform.position,ForceMode.Acceleration);
+            floatForce += verticalThrust;
             flameup.enableEmission = true;
         }
         else
@@ -105,6 +112,12 @@ public class balloon : MonoBehaviour
             rb.AddForceAtPosition(Vector3.right * horT,  transform.position, ForceMode.Acceleration);
         else if (h < 0)
             rb.AddForceAtPosition(Vector3.right * -horT,  transform.position, ForceMode.Acceleration);
+
+        if (floatForce > risingForce + verticalThrust)
+            floatForce = risingForce + verticalThrust;
+        floatForce = floatForce*(1 - transform.position.y / max_height_modifier) * (1 - transform.position.y / max_height_modifier);
+        rb.AddForceAtPosition(Vector3.up * floatForce, transform.up + transform.position, ForceMode.Acceleration);
+
        // AlignUpwards();
     }
 
