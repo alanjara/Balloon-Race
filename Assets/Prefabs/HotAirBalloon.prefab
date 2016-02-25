@@ -180,14 +180,14 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164886}
-  m_Mesh: {fileID: 4300000, guid: a3e3c1ed25853ea4598d61b6677e14b2, type: 3}
+  m_Mesh: {fileID: 4300000, guid: f5efd47038b580344b36f27f6ac89010, type: 3}
 --- !u!33 &3389306
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142858}
-  m_Mesh: {fileID: 4300000, guid: aa50b5bc36b6d4e45b0ac027c6f71dcc, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 188b31b05eda19e458afaa14b86c5183, type: 3}
 --- !u!54 &5400196
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -312,6 +312,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: f5efd47038b580344b36f27f6ac89010, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 199600}

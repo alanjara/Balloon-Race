@@ -42,3 +42,4 @@ Library/UnityAssemblies/UnityEngine.UI.dll
 Library/shadercompiler-UnityShaderCompiler.exe0.log
 *.dll
 *.dll
+*.meta

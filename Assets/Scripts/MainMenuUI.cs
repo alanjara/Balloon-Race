@@ -14,10 +14,10 @@ public class MainMenuUI : MonoBehaviour {
 	}
 
 	void loadOnePlayer(){
-		SceneManager.LoadScene ("SceneAlan");
+		SceneManager.LoadScene ("_1PlyrBloonSel");
 	}
 
 	void loadTwoPlayer(){
-		SceneManager.LoadScene ("SceneAlan");
+		SceneManager.LoadScene ("_1PlyrBloonSel");
 	}
 }
