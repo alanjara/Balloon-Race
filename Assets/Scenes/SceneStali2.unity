@@ -1068,7 +1068,7 @@ Transform:
   - {fileID: 14959496}
   - {fileID: 1308568290}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
 --- !u!1 &265871292
 GameObject:
   m_ObjectHideFlags: 0
@@ -7223,7 +7223,7 @@ Transform:
   - {fileID: 1771739529}
   - {fileID: 2046652489}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 24
 --- !u!1001 &1256115552
 Prefab:
   m_ObjectHideFlags: 0
@@ -7448,7 +7448,6 @@ MonoBehaviour:
     m_Bits: 0
   minilightning: {fileID: 173134, guid: 72497d424f2e9a04d85223eea3e72c06, type: 2}
   respawn: {fileID: 100854, guid: a9380837f73c5a74980716926cc02957, type: 2}
-  poofs: {fileID: 139010, guid: 375d1b860143b4047a2a14a4351c82d1, type: 2}
 --- !u!136 &1308568286
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10975,7 +10974,6 @@ MonoBehaviour:
     m_Bits: 0
   minilightning: {fileID: 173134, guid: 72497d424f2e9a04d85223eea3e72c06, type: 2}
   respawn: {fileID: 100854, guid: a9380837f73c5a74980716926cc02957, type: 2}
-  poofs: {fileID: 139010, guid: 375d1b860143b4047a2a14a4351c82d1, type: 2}
 --- !u!75 &2046652485
 ConstantForce:
   m_ObjectHideFlags: 0
