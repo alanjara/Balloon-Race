@@ -1,10 +1,18 @@
 fileFormatVersion: 2
 guid: cf7499b0293fb8e4596bcf1d354c4182
-timeCreated: 1456190801
+timeCreated: 1456427522
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - firebolt: {fileID: 141530, guid: 369eee557c4d41c479225bf744fa6a5f, type: 2}
+  - wind_wave: {fileID: 119664, guid: 7dfdcd251aee5134c9d486599626b867, type: 2}
+  - spawn: {instanceID: 0}
+  - flameup: {instanceID: 0}
+  - speedboost: {instanceID: 0}
+  - bleed: {fileID: 113984, guid: 3046341e43796774ca8b6f684b4baa66, type: 2}
+  - minilightning: {fileID: 173134, guid: 72497d424f2e9a04d85223eea3e72c06, type: 2}
+  - respawn: {fileID: 100854, guid: a9380837f73c5a74980716926cc02957, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

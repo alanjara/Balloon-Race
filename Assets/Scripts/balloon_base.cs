@@ -7,16 +7,16 @@ public class balloon_base : MonoBehaviour {
     public GameObject firebolt;
     Rigidbody rb;
     public GameObject wind_wave;
-
+    public int my_number;
     //wind blast consts
     private const float wind_power = 0.2f;
     private const float wind_radius = 50f;
-    public GameObject spawn;
-    public float verticalThrust;
-    public float horizontalThrust;
+    GameObject spawn;
+    public float verticalThrust = 60;
+    public float horizontalThrust = 20;
     float boost_count = 0;
-    public float horizontalThrustBoosted;
-    public float risingForce;
+    public float horizontalThrustBoosted = 40;
+    public float risingForce = 5;
     protected bool fire;
     public float v, h;
     float floatForce;
@@ -27,14 +27,18 @@ public class balloon_base : MonoBehaviour {
     public Vector3 LastCheckpoint = new Vector3(-5f, 5f, -22f);
     public float up;
     bool deadBaloon = false;
-    public ParticleSystem flameup;
-    public ParticleSystem speedboost;
+    ParticleSystem flameup;
+    ParticleSystem speedboost;
     protected PowerUp powerup;
     protected int _fuel, _life, _speed;
     public GameObject bleed;
     public LayerMask balloon_layer;
     public GameObject minilightning;
+    controls my_inputs;
 
+    struct controls {
+        public string up, vert, hor;
+    };
     public void OnCollisionEnter(Collision collision) {
         if (deadBaloon) {
             return;
@@ -85,7 +89,7 @@ public class balloon_base : MonoBehaviour {
 
     IEnumerator dieAnimation() {
         yield return new WaitForSeconds(5f);
-        
+
         //GameObject g = Instantiate(respawn, LastCheckpoint, Quaternion.Euler(new Vector3(0,0,0))) as GameObject;
         // cameraFollow.S.target = g.transform.GetChild(0).gameObject;
         //  Destroy(this.transform.parent.gameObject);
@@ -102,6 +106,14 @@ public class balloon_base : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        my_inputs.up = string.Format("Up{0}", my_number);
+        my_inputs.vert = string.Format("Vertical{0}", my_number);
+        my_inputs.hor = string.Format("Horizontal{0}", my_number);
+        flameup = gameObject.transform.Find("Flame").gameObject.GetComponent<ParticleSystem>();
+        speedboost = gameObject.transform.Find("Speed").gameObject.GetComponent<ParticleSystem>();
+        spawn = gameObject.transform.Find("Flame").gameObject;
+        balloon_layer = LayerMask.GetMask("Balloon");
+
         life = 2;
         floatForce = risingForce;
         rb = GetComponent<Rigidbody>();
@@ -144,7 +156,8 @@ public class balloon_base : MonoBehaviour {
             flameup.enableEmission = true;
             up = 0;
         } else {
-          if(rb.velocity.y <0)  flameup.enableEmission = false;
+            if (rb.velocity.y < 0)
+                flameup.enableEmission = false;
         }
         if (v > 0)
             rb.AddForceAtPosition(Vector3.forward * horT, transform.position, ForceMode.Acceleration);
@@ -159,6 +172,13 @@ public class balloon_base : MonoBehaviour {
             floatForce = risingForce + verticalThrust;
         floatForce = floatForce * (1 - transform.position.y / max_height_modifier) * (1 - transform.position.y / max_height_modifier);
         rb.AddForceAtPosition(Vector3.up * floatForce, transform.up + transform.position, ForceMode.Acceleration);
+        RaycastHit[] chasers;
+        chasers = Physics.SphereCastAll(transform.position, 1, Vector3.Normalize(-1 * rb.velocity), rb.velocity.magnitude * 10, balloon_layer);
+        Debug.DrawLine(transform.position, Vector3.Normalize(-1 * rb.velocity) * rb.velocity.magnitude * 10, Color.red);
+        for (int i = 0; i < chasers.Length; i++) {
+            if (chasers[i].distance > 0.1)
+                chasers[i].collider.gameObject.GetComponent<balloon_base>().draft(rb.velocity * 3 * (1 - chasers[i].distance / (rb.velocity.magnitude * 10)));
+        }
 
         // AlignUpwards();
         if (fire)
@@ -166,29 +186,35 @@ public class balloon_base : MonoBehaviour {
     }
 
     // Update is called once per frame
-    public virtual void Update() {
+    void Update() {
+        up = Input.GetAxis(my_inputs.up);
+        v = Input.GetAxis(my_inputs.vert);
+        h = Input.GetAxis(my_inputs.hor);
+        // fire = Input.GetKeyDown(KeyCode.RightControl);
 
     }
 
     Coroutine boostingcr;
 
-    IEnumerator getboost()
-    {
+    IEnumerator getboost() {
         horT = horizontalThrustBoosted;
         speedboost.enableEmission = true;
         yield return new WaitForSeconds(3f);
         horT = horizontalThrust;
         speedboost.enableEmission = false;
     }
-
+    public void boost() {
+        if (boostingcr != null) {
+            StopCoroutine(boostingcr);
+        }
+        boostingcr = StartCoroutine(getboost());
+    }
+    public void draft(Vector3 tailwind) {
+        rb.AddForceAtPosition(tailwind, transform.position, ForceMode.Acceleration);
+    }
     public void OnTriggerEnter(Collider coll) {
-        if(coll.tag == "Boost")
-        {
-            if(boostingcr != null)
-            {
-                StopCoroutine(boostingcr);
-            }
-            boostingcr = StartCoroutine(getboost());
+        if (coll.tag == "Boost") {
+            boost();
         }
         if (coll.tag == "Pickups") {
             float dice = Random.value;
@@ -210,7 +236,7 @@ public class balloon_base : MonoBehaviour {
 
     private void shockWave() {
         Vector3 explosionPos = transform.position;
-        Collider[] colliders = Physics.OverlapSphere(explosionPos, wind_radius,balloon_layer);
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, wind_radius, balloon_layer);
         foreach (Collider hit in colliders) {
             Rigidbody rb = hit.GetComponent<Rigidbody>();
             if (hit.gameObject == gameObject)
