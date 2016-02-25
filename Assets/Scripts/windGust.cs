@@ -10,18 +10,19 @@ public class windGust : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         balloon_parts = LayerMask.GetMask("Balloon", "Basket");
-        height = transform.localScale.y;
-        width = height = transform.localScale.x;
-        
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+        height = transform.localScale.y;
+        width = height = transform.localScale.x;
+        topleft = transform.position + transform.up * transform.localScale.y / 2 + transform.up * transform.localScale.y / 2;
         float xdensity = width*density;
         float ydensity = height*density;
         for (int x = 0; x < xdensity; x++) {
             for (int y = 0; y < ydensity; y++) {
-                return;
+                Vector3 gust = topleft + transform.up * y / ydensity + transform.right * x / xdensity;
+                
             }
         }
 	}
