@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneAlan.unity
   - enabled: 1
     path: Assets/Scenes/SceneStali.unity
+  - enabled: 1
+    path: Assets/Scenes/_1PlyrBloonSel.unity
