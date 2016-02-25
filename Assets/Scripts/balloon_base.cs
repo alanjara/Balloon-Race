@@ -109,7 +109,7 @@ public class balloon_base : MonoBehaviour {
         verT = verticalThrust;
         speedboost.enableEmission = false;
         size = transform.localScale;
-        powerup = PowerUp.fire_ball;
+        powerup = PowerUp.wind_blast;
     }
 
 
@@ -144,7 +144,7 @@ public class balloon_base : MonoBehaviour {
             flameup.enableEmission = true;
             up = 0;
         } else {
-            flameup.enableEmission = false;
+          if(rb.velocity.y <0)  flameup.enableEmission = false;
         }
         if (v > 0)
             rb.AddForceAtPosition(Vector3.forward * horT, transform.position, ForceMode.Acceleration);

@@ -32,3 +32,12 @@ Library/CurrentLayout.dwlt
 Library/CurrentLayout.dwlt
 *.dwlt
 *.bin
+*.dll
+Library/UnityAssemblies/UnityEngine.Networking.dll
+*.dll
+Library/UnityAssemblies/UnityEngine.UI.dll
+*.dll
+Library/UnityAssemblies/UnityEngine.UI.dll
+*.log
+Library/shadercompiler-UnityShaderCompiler.exe0.log
+*.dll
