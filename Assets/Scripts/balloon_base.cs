@@ -19,7 +19,8 @@ public class balloon_base : MonoBehaviour {
     public float horizontalThrustBoosted = 40;
     public float risingForce = 5;
     protected bool fire;
-    protected float fire_float;
+    protected bool fire_pressed = false;
+    public float fire_float;
     public float v, h;
     float floatForce;
     float horT, verT;
@@ -125,7 +126,7 @@ public class balloon_base : MonoBehaviour {
         my_inputs.fire = string.Format("Fire{0}", my_number);
         flameup = gameObject.transform.Find("Flame").gameObject.GetComponent<ParticleSystem>();
         speedboost = gameObject.transform.Find("Speed").gameObject.GetComponent<ParticleSystem>();
-        spawn = gameObject.transform.Find("Flame").gameObject;
+        spawn = gameObject.transform.Find("spawn").gameObject;
         balloon_layer = LayerMask.GetMask("Balloon");
 
         life = 1;
@@ -206,14 +207,20 @@ public class balloon_base : MonoBehaviour {
         up = Input.GetAxis(my_inputs.up);
         v = Input.GetAxis(my_inputs.vert);
         h = Input.GetAxis(my_inputs.hor);
-        fire_float = Input.GetAxis(my_inputs.fire);
-        if (fire_float > 0)
+        fire_float = Input.GetAxisRaw(my_inputs.fire);
+        if (fire_float > 0 && !fire_pressed)
+        {
             fire = true;
+            fire_pressed = true;
+        }
         else
         {
             fire = false;
         }
-
+        if (fire_float <= 0)
+        {
+            fire_pressed = false;
+        }
     }
 
     Coroutine boostingcr;
@@ -295,7 +302,6 @@ public class balloon_base : MonoBehaviour {
                     Invoke("suckWave", i / 100f);
                 }
                 Instantiate(absorb_wave, transform.position, Quaternion.identity);
-                powerup = PowerUp.none;
                 break;
             case PowerUp.rocket_boost:
                 ////speed up for a while
@@ -309,7 +315,6 @@ public class balloon_base : MonoBehaviour {
                     Invoke("shockWave", i / 100f);
                 }
                 Instantiate(wind_wave, transform.position, Quaternion.identity);
-                powerup = PowerUp.none;
 
                 break;
             default:
