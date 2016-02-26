@@ -51,3 +51,7 @@ Library/ScriptAssemblies/Assembly-CSharp.dll
 *.meta
 Assets/Scenes/_1PlyrBloonSel.unity.meta
 *.meta
+*.mdb
+Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+*.dll
+*.mdb

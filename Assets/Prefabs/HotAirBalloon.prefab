@@ -728,7 +728,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159870}
-  m_Mesh: {fileID: 4300000, guid: 7fbd2c1ec0be3184bb79db3e07e1f036, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 432b4cc6166058c4cb2930087eeff804, type: 3}
 --- !u!33 &3316466
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -756,7 +756,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197242}
-  m_Mesh: {fileID: 4300000, guid: 93ca1ce2717a2104791988eeb41adbd9, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 46a4d5569122cac41b3ee4a5df98925c, type: 3}
 --- !u!54 &5451828
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -839,7 +839,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   minilightning: {fileID: 173134, guid: 72497d424f2e9a04d85223eea3e72c06, type: 2}
-  respawn: {fileID: 100854, guid: a9380837f73c5a74980716926cc02957, type: 2}
+  respawn: {fileID: 195910}
+  poofs: {fileID: 139010, guid: 375d1b860143b4047a2a14a4351c82d1, type: 2}
 --- !u!114 &11475782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4073,7 +4074,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 46a4d5569122cac41b3ee4a5df98925c, type: 3}
+    - target: {fileID: 0}
+      propertyPath: poofs
+      value: 
+      objectReference: {fileID: 139010, guid: 375d1b860143b4047a2a14a4351c82d1, type: 2}
+    - target: {fileID: 0}
+      propertyPath: respawn
+      value: 
+      objectReference: {fileID: 195910}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 195910}
