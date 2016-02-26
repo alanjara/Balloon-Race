@@ -22,7 +22,6 @@ public class cameraFollow : MonoBehaviour {
     void Start() {
         newPos = Camera.main.transform.position;
         newPos.y = target.transform.position.y + 4f;
-        ;
         newPos.z = target.transform.position.z - FollowDistance;
         Camera.main.transform.position = newPos;
     }
