@@ -100,12 +100,14 @@ public class balloon_base : MonoBehaviour {
     }
 
     public GameObject poofs;
+    Dictionary<GameObject, bool> pooferinos = new Dictionary<GameObject, bool>();
     IEnumerator makepoofs()
     {
         while (true)
         {
             yield return new WaitForSeconds(2f);
-            Instantiate(poofs, transform.position - transform.forward * 2f, Quaternion.Euler(new Vector3(-90f, 0, 0)));
+            GameObject didem = Instantiate(poofs, transform.position - transform.forward * 2f, Quaternion.Euler(new Vector3(-90f, 0, 0))) as GameObject;
+            pooferinos[didem] = true;
         }
     }
     public int speed {
@@ -236,6 +238,14 @@ public class balloon_base : MonoBehaviour {
     }
     public void OnTriggerEnter(Collider coll) {
         if (coll.tag == "Boost") {
+            if (pooferinos.ContainsKey(coll.gameObject))
+            {
+                if(pooferinos.Count > 100)
+                {
+                    pooferinos.Clear();
+                }
+                return;
+            }
             boost();
         }
         if (coll.tag == "Pickups") {
