@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class windWave : MonoBehaviour {
+public class absorbWave : MonoBehaviour {
    
 	// Use this for initialization
 	void Start () {
@@ -10,6 +10,6 @@ public class windWave : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.localScale +=  100*Time.deltaTime * Vector3.one;
+        transform.localScale -=  100*Time.deltaTime * Vector3.one;
 	}
 }
