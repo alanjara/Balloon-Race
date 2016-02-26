@@ -95,6 +95,16 @@ public class balloon_base : MonoBehaviour {
         //  Destroy(this.transform.parent.gameObject);
         Application.LoadLevel(Application.loadedLevel);
     }
+
+    public GameObject poofs;
+    IEnumerator makepoofs()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
+            Instantiate(poofs, transform.position - transform.forward * 2f, Quaternion.Euler(new Vector3(-90f, 0, 0)));
+        }
+    }
     public int speed {
         get {
             return speed;
@@ -122,6 +132,8 @@ public class balloon_base : MonoBehaviour {
         speedboost.enableEmission = false;
         size = transform.localScale;
         powerup = PowerUp.wind_blast;
+
+        StartCoroutine(makepoofs());
     }
 
 
