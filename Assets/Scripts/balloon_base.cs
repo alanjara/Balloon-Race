@@ -186,13 +186,13 @@ public class balloon_base : MonoBehaviour {
         rb.AddForceAtPosition(Vector3.up * floatForce, transform.up + transform.position, ForceMode.Acceleration);
         RaycastHit[] chasers;
         chasers = Physics.SphereCastAll(transform.position, 1, Vector3.Normalize(-1 * rb.velocity), rb.velocity.magnitude * 10, balloon_layer);
+        /*
         Debug.DrawLine(transform.position, Vector3.Normalize(-1 * rb.velocity) * rb.velocity.magnitude * 10, Color.red);
         for (int i = 0; i < chasers.Length; i++) {
             if (chasers[i].distance > 0.1)
                 chasers[i].collider.gameObject.GetComponent<balloon_base>().draft(rb.velocity * 3 * (1 - chasers[i].distance / (rb.velocity.magnitude * 10)));
         }
-
-        // AlignUpwards();
+        */
         if (fire)
             usePowerup();
     }
@@ -221,9 +221,11 @@ public class balloon_base : MonoBehaviour {
         }
         boostingcr = StartCoroutine(getboost());
     }
+    /*
     public void draft(Vector3 tailwind) {
         rb.AddForceAtPosition(tailwind, transform.position, ForceMode.Acceleration);
     }
+     */
     public void OnTriggerEnter(Collider coll) {
         if (coll.tag == "Boost") {
             boost();
