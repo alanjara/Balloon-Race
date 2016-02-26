@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class balloon_base : MonoBehaviour {
     //powerup gameobjects
     public GameObject firebolt;
+    public GameObject absorb_wave;
     Rigidbody rb;
     public GameObject wind_wave;
     public int my_number;
@@ -18,6 +19,7 @@ public class balloon_base : MonoBehaviour {
     public float horizontalThrustBoosted = 40;
     public float risingForce = 5;
     protected bool fire;
+    protected float fire_float;
     public float v, h;
     float floatForce;
     float horT, verT;
@@ -38,6 +40,7 @@ public class balloon_base : MonoBehaviour {
 
     struct controls {
         public string up, vert, hor;
+        public string fire;
     };
     public void OnCollisionEnter(Collision collision) {
         if (deadBaloon) {
@@ -97,12 +100,14 @@ public class balloon_base : MonoBehaviour {
     }
 
     public GameObject poofs;
+    Dictionary<GameObject, bool> pooferinos = new Dictionary<GameObject, bool>();
     IEnumerator makepoofs()
     {
         while (true)
         {
             yield return new WaitForSeconds(2f);
-            Instantiate(poofs, transform.position - transform.forward * 2f, Quaternion.Euler(new Vector3(-90f, 0, 0)));
+            GameObject didem = Instantiate(poofs, transform.position - transform.forward * 2f, Quaternion.Euler(new Vector3(-90f, 0, 0))) as GameObject;
+            pooferinos[didem] = true;
         }
     }
     public int speed {
@@ -119,19 +124,20 @@ public class balloon_base : MonoBehaviour {
         my_inputs.up = string.Format("Up{0}", my_number);
         my_inputs.vert = string.Format("Vertical{0}", my_number);
         my_inputs.hor = string.Format("Horizontal{0}", my_number);
+        my_inputs.fire = string.Format("Fire{0}", my_number);
         flameup = gameObject.transform.Find("Flame").gameObject.GetComponent<ParticleSystem>();
         speedboost = gameObject.transform.Find("Speed").gameObject.GetComponent<ParticleSystem>();
         spawn = gameObject.transform.Find("Flame").gameObject;
         balloon_layer = LayerMask.GetMask("Balloon");
 
-        life = 2;
+        life = 1;
         floatForce = risingForce;
         rb = GetComponent<Rigidbody>();
         horT = horizontalThrust;
         verT = verticalThrust;
         speedboost.enableEmission = false;
         size = transform.localScale;
-        powerup = PowerUp.wind_blast;
+        powerup = PowerUp.fire_ball;
 
         StartCoroutine(makepoofs());
     }
@@ -202,7 +208,13 @@ public class balloon_base : MonoBehaviour {
         up = Input.GetAxis(my_inputs.up);
         v = Input.GetAxis(my_inputs.vert);
         h = Input.GetAxis(my_inputs.hor);
-        // fire = Input.GetKeyDown(KeyCode.RightControl);
+        fire_float = Input.GetAxis(my_inputs.fire);
+        if (fire_float > 0)
+            fire = true;
+        else
+        {
+            fire = false;
+        }
 
     }
 
@@ -228,6 +240,14 @@ public class balloon_base : MonoBehaviour {
      */
     public void OnTriggerEnter(Collider coll) {
         if (coll.tag == "Boost") {
+            if (pooferinos.ContainsKey(coll.gameObject))
+            {
+                if(pooferinos.Count > 100)
+                {
+                    pooferinos.Clear();
+                }
+                return;
+            }
             boost();
         }
         if (coll.tag == "Pickups") {
@@ -259,13 +279,35 @@ public class balloon_base : MonoBehaviour {
                 rb.AddExplosionForce(wind_power, explosionPos, wind_radius, 3.0F);
         }
     }
+
+    private void suckWave()
+    {
+        Vector3 explosionPos = transform.position;
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, wind_radius, balloon_layer);
+        foreach (Collider hit in colliders)
+        {
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+            if (hit.gameObject == gameObject)
+                continue;
+            if (rb != null)
+                rb.AddExplosionForce(-wind_power, explosionPos, wind_radius, 3.0F);
+        }
+    }
+
     public void usePowerup() {
         switch (powerup) {
             case PowerUp.fire_ball:
                 //shoot a series of fireballs
                 Instantiate(firebolt, spawn.transform.position, spawn.transform.rotation);
                 break;
-            case PowerUp.fuel:
+            case PowerUp.Wind_suck:
+                // a force pulling everything together
+                for (int i = 0; i < 100; i ++)
+                {
+                    Invoke("suckWave", i / 100f);
+                }
+                Instantiate(absorb_wave, transform.position, Quaternion.identity);
+                powerup = PowerUp.none;
                 break;
             case PowerUp.rocket_boost:
                 ////speed up for a while
@@ -278,8 +320,8 @@ public class balloon_base : MonoBehaviour {
                 for (int i = 0; i < 100; i++) {
                     Invoke("shockWave", i / 100f);
                 }
-
                 Instantiate(wind_wave, transform.position, Quaternion.identity);
+                powerup = PowerUp.none;
 
                 break;
             default:
@@ -290,4 +332,5 @@ public class balloon_base : MonoBehaviour {
     }
 }
 
-public enum PowerUp { rocket_boost, wind_blast, fire_ball, fuel, none };
+public enum PowerUp { rocket_boost, wind_blast, fire_ball, Wind_suck, none };
+
