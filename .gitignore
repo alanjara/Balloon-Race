@@ -43,3 +43,8 @@ Library/shadercompiler-UnityShaderCompiler.exe0.log
 *.dll
 *.dll
 *.meta
+*.dwlt
+*.dwlt
+Library/CurrentLayout.dwlt
+*.mdb
+Library/ScriptAssemblies/Assembly-CSharp.dll
