@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class balloon_base : MonoBehaviour {
+    public GameObject UICANVAS;
     //powerup gameobjects
     public GameObject firebolt;
     public GameObject absorb_wave;
@@ -37,6 +38,7 @@ public class balloon_base : MonoBehaviour {
     public GameObject bleed;
     public LayerMask balloon_layer;
     public GameObject minilightning;
+    public GameObject dangerIcon;
     controls my_inputs;
 
     struct controls {
@@ -44,7 +46,7 @@ public class balloon_base : MonoBehaviour {
         public string fire;
     };
     public void OnCollisionEnter(Collision collision) {
-        if (deadBaloon) {
+        if (deadBaloon || immune) {
             return;
         }
         if (collision.gameObject.name == "SKY") {
@@ -53,20 +55,26 @@ public class balloon_base : MonoBehaviour {
             for (int c = 0; c < collision.contacts.Length; ++c) {
                 GameObject g = Instantiate(bleed, collision.contacts[c].point, transform.rotation) as GameObject;
                 g.transform.SetParent(this.transform);
+                explosions.Add(g);
             }
             StartCoroutine(dieAnimation());
             return;
         }
         if (collision.gameObject.tag == "Dangerous") {
-            life--;
+           // life--;
             for (int c = 0; c < collision.contacts.Length; ++c) {
                 GameObject g = Instantiate(bleed, collision.contacts[c].point, transform.rotation) as GameObject;
                 g.transform.SetParent(this.transform);
-                if (life != 0)
-                    Destroy(g, 2f);
+                explosions.Add(g);
+                //if (life != 0)
+                    //Destroy(g, 2f);
             }
+
+            deadBaloon = true;
+            StartCoroutine(dieAnimation());
         }
     }
+    List<GameObject> explosions = new List<GameObject>();
     // set get classes
     public int fuel {
         get {
@@ -90,14 +98,33 @@ public class balloon_base : MonoBehaviour {
             }
         }
     }
+    public bool immune = false;
+    IEnumerator becomeImmune(float secs)
+    {
+        immune = true;
+        yield return new WaitForSeconds(secs);
+        immune = false;
+    }
 
     IEnumerator dieAnimation() {
-        yield return new WaitForSeconds(5f);
+        GameObject g = Instantiate(dangerIcon) as GameObject;
+        g.transform.SetParent(UICANVAS.transform);
+        Vector3 where = Camera.allCameras[my_number-1].WorldToScreenPoint(transform.position);
+        g.transform.position = where;
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(becomeImmune(1f));
+        deadBaloon = false;
+        for(int c = 0; c < explosions.Count; ++c)
+        {
+            Destroy(explosions[c]);
 
+        }
+        explosions.Clear();
         //GameObject g = Instantiate(respawn, LastCheckpoint, Quaternion.Euler(new Vector3(0,0,0))) as GameObject;
         // cameraFollow.S.target = g.transform.GetChild(0).gameObject;
         //  Destroy(this.transform.parent.gameObject);
-        Application.LoadLevel(Application.loadedLevel);
+        //Application.LoadLevel(Application.loadedLevel);
+
     }
 
     public GameObject poofs;
@@ -122,6 +149,8 @@ public class balloon_base : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        UICANVAS = GameObject.FindGameObjectWithTag("UI");
+
         my_inputs.up = string.Format("Up{0}", my_number);
         my_inputs.vert = string.Format("Vertical{0}", my_number);
         my_inputs.hor = string.Format("Horizontal{0}", my_number);
@@ -247,12 +276,13 @@ public class balloon_base : MonoBehaviour {
      */
     public void OnTriggerEnter(Collider coll) {
         if (coll.tag == "Boost") {
-            if (pooferinos.ContainsKey(coll.gameObject))
+            if (pooferinos.ContainsKey(coll.gameObject.transform.parent.gameObject))
             {
                 if(pooferinos.Count > 100)
                 {
                     pooferinos.Clear();
                 }
+                print("HIt your own poof");
                 return;
             }
             boost();

@@ -822,12 +822,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firebolt: {fileID: 141530, guid: 369eee557c4d41c479225bf744fa6a5f, type: 2}
+  absorb_wave: {fileID: 0}
   wind_wave: {fileID: 119664, guid: 7dfdcd251aee5134c9d486599626b867, type: 2}
   my_number: 1
   verticalThrust: 60
   horizontalThrust: 20
   horizontalThrustBoosted: 40
   risingForce: 5
+  fire_float: 0
   v: 0
   h: 0
   expansion: 0
@@ -839,7 +841,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   minilightning: {fileID: 173134, guid: 72497d424f2e9a04d85223eea3e72c06, type: 2}
+  dangerIcon: {fileID: 121970, guid: 842e2f272e07ebd499ad8ca6fc13e52d, type: 2}
   respawn: {fileID: 195910}
+  immune: 0
   poofs: {fileID: 139010, guid: 375d1b860143b4047a2a14a4351c82d1, type: 2}
 --- !u!114 &11475782
 MonoBehaviour:
@@ -4087,6 +4091,10 @@ Prefab:
       propertyPath: respawn
       value: 
       objectReference: {fileID: 195910}
+    - target: {fileID: 0}
+      propertyPath: dangerIcon
+      value: 
+      objectReference: {fileID: 121970, guid: 842e2f272e07ebd499ad8ca6fc13e52d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 195910}

@@ -983,14 +983,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7499b0293fb8e4596bcf1d354c4182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UICANVAS: {fileID: 0}
   firebolt: {fileID: 141530, guid: 369eee557c4d41c479225bf744fa6a5f, type: 2}
   absorb_wave: {fileID: 119664, guid: e98dbcd2372a00744b8f1bd69008e20b, type: 2}
   wind_wave: {fileID: 119664, guid: 7dfdcd251aee5134c9d486599626b867, type: 2}
   my_number: 1
   verticalThrust: 60
-  horizontalThrust: 20
-  horizontalThrustBoosted: 40
+  horizontalThrust: 40
+  horizontalThrustBoosted: 70
   risingForce: 5
+  fire_float: 0
   v: 0
   h: 0
   expansion: 0
@@ -1002,7 +1004,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   minilightning: {fileID: 173134, guid: 72497d424f2e9a04d85223eea3e72c06, type: 2}
+  dangerIcon: {fileID: 121970, guid: 842e2f272e07ebd499ad8ca6fc13e52d, type: 2}
   respawn: {fileID: 622084901}
+  immune: 0
   poofs: {fileID: 139010, guid: 375d1b860143b4047a2a14a4351c82d1, type: 2}
 --- !u!75 &57966375
 ConstantForce:
@@ -1318,7 +1322,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 62942547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.9059, y: 263.71, z: 214.4}
+  m_LocalPosition: {x: -6.9059, y: 272.5, z: 214.4}
   m_LocalScale: {x: 4228.1904, y: 6.741366, z: 6741.3657}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7159,7 +7163,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 320698256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.9059, y: 196.29, z: 214.4}
+  m_LocalPosition: {x: -6.9059, y: 205.1, z: 214.4}
   m_LocalScale: {x: 4228.1904, y: 6.741366, z: 6741.3657}
   m_Children: []
   m_Father: {fileID: 0}
@@ -21936,7 +21940,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 962359656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.9059, y: 243.48, z: 214.4}
+  m_LocalPosition: {x: -6.9059, y: 252.3, z: 214.4}
   m_LocalScale: {x: 4228.1904, y: 6.741366, z: 6741.3657}
   m_Children: []
   m_Father: {fileID: 0}
@@ -30187,7 +30191,7 @@ GameObject:
   - 114: {fileID: 1328564241}
   m_Layer: 5
   m_Name: UI
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30219,7 +30223,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -31556,6 +31560,10 @@ Prefab:
       propertyPath: m_Name
       value: LandingPad (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11436686, guid: 323f26ea41234db4ca9d0d3db395e959, type: 2}
+      propertyPath: levelendtext
+      value: 
+      objectReference: {fileID: 1075387330}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 323f26ea41234db4ca9d0d3db395e959, type: 2}
   m_IsPrefabParent: 0
@@ -42775,14 +42783,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7499b0293fb8e4596bcf1d354c4182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UICANVAS: {fileID: 0}
   firebolt: {fileID: 141530, guid: 369eee557c4d41c479225bf744fa6a5f, type: 2}
   absorb_wave: {fileID: 119664, guid: e98dbcd2372a00744b8f1bd69008e20b, type: 2}
   wind_wave: {fileID: 119664, guid: 7dfdcd251aee5134c9d486599626b867, type: 2}
   my_number: 2
   verticalThrust: 60
-  horizontalThrust: 20
-  horizontalThrustBoosted: 40
+  horizontalThrust: 40
+  horizontalThrustBoosted: 70
   risingForce: 5
+  fire_float: 0
   v: 0
   h: 0
   expansion: 0
@@ -42794,7 +42804,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   minilightning: {fileID: 173134, guid: 72497d424f2e9a04d85223eea3e72c06, type: 2}
+  dangerIcon: {fileID: 121970, guid: 842e2f272e07ebd499ad8ca6fc13e52d, type: 2}
   respawn: {fileID: 667632083}
+  immune: 0
   poofs: {fileID: 139010, guid: 375d1b860143b4047a2a14a4351c82d1, type: 2}
 --- !u!75 &1928996907
 ConstantForce:
