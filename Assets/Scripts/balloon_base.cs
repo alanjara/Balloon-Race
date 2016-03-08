@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class balloon_base : MonoBehaviour {
     public GameObject UICANVAS;
@@ -39,7 +40,17 @@ public class balloon_base : MonoBehaviour {
     public LayerMask balloon_layer;
     public GameObject minilightning;
     public GameObject dangerIcon;
+    public GameObject powerupUI;
+    Transform poweruptransform;
+    Image powerupimage;
+    public Sprite iconFire, iconWind, iconSpeed;
     controls my_inputs;
+
+    public void AlignUIPowerup()
+    {
+        poweruptransform.position = Camera.allCameras[my_number - 1].WorldToScreenPoint(transform.position - 2 * Vector3.up);
+
+    }
 
     struct controls {
         public string up, vert, hor;
@@ -147,9 +158,36 @@ public class balloon_base : MonoBehaviour {
         }
     }
 
+    void setCorrectPowerupImage()
+    {
+        powerupimage.enabled = true;
+        switch (powerup)
+        {
+            case PowerUp.fire_ball:
+                powerupimage.sprite = iconFire;
+                break;
+            case PowerUp.Wind_suck:
+                powerupimage.sprite = iconWind;
+                break;
+            case PowerUp.rocket_boost:
+                powerupimage.sprite = iconSpeed;
+                break;
+            case PowerUp.wind_blast:
+                powerupimage.sprite = iconWind;
+                break;
+            default:
+                powerupimage.enabled = false;
+                break;
+        }
+    }
+
     // Use this for initialization
     void Start() {
         UICANVAS = GameObject.FindGameObjectWithTag("UI");
+        GameObject g = Instantiate(powerupUI) as GameObject;
+        g.transform.SetParent(UICANVAS.transform);
+        poweruptransform = g.transform;
+        powerupimage = g.GetComponent<Image>();
 
         my_inputs.up = string.Format("Up{0}", my_number);
         my_inputs.vert = string.Format("Vertical{0}", my_number);
@@ -167,9 +205,11 @@ public class balloon_base : MonoBehaviour {
         verT = verticalThrust;
         speedboost.enableEmission = false;
         size = transform.localScale;
-        powerup = PowerUp.fire_ball;
+        powerup = PowerUp.wind_blast;
 
         StartCoroutine(makepoofs());
+
+        setCorrectPowerupImage();
     }
 
 
@@ -231,6 +271,8 @@ public class balloon_base : MonoBehaviour {
         */
         if (fire)
             usePowerup();
+
+        AlignUIPowerup();
     }
 
     // Update is called once per frame
@@ -297,6 +339,8 @@ public class balloon_base : MonoBehaviour {
                 pickupPowerup(PowerUp.wind_blast);
             }
             Destroy(coll.gameObject);
+
+            setCorrectPowerupImage();
         }
     }
 
@@ -347,9 +391,7 @@ public class balloon_base : MonoBehaviour {
                 break;
             case PowerUp.rocket_boost:
                 ////speed up for a while
-                boost_count = 5;
-                horizontalThrust *= 5;
-                powerup = PowerUp.none;
+                boost();
                 break;
             case PowerUp.wind_blast:
                 //a force pushing everything away
@@ -363,7 +405,9 @@ public class balloon_base : MonoBehaviour {
                 //dont own a powerup
                 break;
         }
+        powerup = PowerUp.none;
 
+        setCorrectPowerupImage();
     }
 }
 
