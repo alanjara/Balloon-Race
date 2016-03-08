@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class balloon_base : MonoBehaviour {
+    public GameObject UICANVAS;
     //powerup gameobjects
     public GameObject firebolt;
     public GameObject absorb_wave;
@@ -19,7 +21,8 @@ public class balloon_base : MonoBehaviour {
     public float horizontalThrustBoosted = 40;
     public float risingForce = 5;
     protected bool fire;
-    protected float fire_float;
+    protected bool fire_pressed = false;
+    public float fire_float;
     public float v, h;
     float floatForce;
     float horT, verT;
@@ -36,14 +39,24 @@ public class balloon_base : MonoBehaviour {
     public GameObject bleed;
     public LayerMask balloon_layer;
     public GameObject minilightning;
-    controls my_inputs;
+    public GameObject dangerIcon;
     public Vector3 race_forward = new Vector3(0, 0, 1);
     public Vector3 race_right = new Vector3(1, 0, 0);
+    public GameObject powerupUI;
     public Vector3 race_up = new Vector3(0, 1, 0);
+    Transform poweruptransform;
     public void setControlDirection(Transform setter) {
         race_forward = setter.forward;
         race_right = setter.right;
         race_up = setter.up;
+    }
+    Image powerupimage;
+    public Sprite iconFire, iconWind, iconSpeed;
+    controls my_inputs;
+
+    public void AlignUIPowerup() {
+        poweruptransform.position = Camera.allCameras[my_number - 1].WorldToScreenPoint(transform.position - 2 * Vector3.up);
+
     }
 
     struct controls {
@@ -51,7 +64,7 @@ public class balloon_base : MonoBehaviour {
         public string fire;
     };
     public void OnCollisionEnter(Collision collision) {
-        if (deadBaloon) {
+        if (deadBaloon || immune) {
             return;
         }
         if (collision.gameObject.name == "SKY") {
@@ -60,20 +73,26 @@ public class balloon_base : MonoBehaviour {
             for (int c = 0; c < collision.contacts.Length; ++c) {
                 GameObject g = Instantiate(bleed, collision.contacts[c].point, transform.rotation) as GameObject;
                 g.transform.SetParent(this.transform);
+                explosions.Add(g);
             }
             StartCoroutine(dieAnimation());
             return;
         }
         if (collision.gameObject.tag == "Dangerous") {
-            life--;
+            // life--;
             for (int c = 0; c < collision.contacts.Length; ++c) {
                 GameObject g = Instantiate(bleed, collision.contacts[c].point, transform.rotation) as GameObject;
                 g.transform.SetParent(this.transform);
-                if (life != 0)
-                    Destroy(g, 2f);
+                explosions.Add(g);
+                //if (life != 0)
+                //Destroy(g, 2f);
             }
+
+            deadBaloon = true;
+            StartCoroutine(dieAnimation());
         }
     }
+    List<GameObject> explosions = new List<GameObject>();
     // set get classes
     public int fuel {
         get {
@@ -97,14 +116,31 @@ public class balloon_base : MonoBehaviour {
             }
         }
     }
+    public bool immune = false;
+    IEnumerator becomeImmune(float secs) {
+        immune = true;
+        yield return new WaitForSeconds(secs);
+        immune = false;
+    }
 
     IEnumerator dieAnimation() {
-        yield return new WaitForSeconds(5f);
+        GameObject g = Instantiate(dangerIcon) as GameObject;
+        g.transform.SetParent(UICANVAS.transform);
+        Vector3 where = Camera.allCameras[my_number - 1].WorldToScreenPoint(transform.position);
+        g.transform.position = where;
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(becomeImmune(1f));
+        deadBaloon = false;
+        for (int c = 0; c < explosions.Count; ++c) {
+            Destroy(explosions[c]);
 
+        }
+        explosions.Clear();
         //GameObject g = Instantiate(respawn, LastCheckpoint, Quaternion.Euler(new Vector3(0,0,0))) as GameObject;
         // cameraFollow.S.target = g.transform.GetChild(0).gameObject;
         //  Destroy(this.transform.parent.gameObject);
-        Application.LoadLevel(Application.loadedLevel);
+        //Application.LoadLevel(Application.loadedLevel);
+
     }
 
     public GameObject poofs;
@@ -112,7 +148,7 @@ public class balloon_base : MonoBehaviour {
     IEnumerator makepoofs() {
         while (true) {
             yield return new WaitForSeconds(2f);
-            GameObject didem = Instantiate(poofs, transform.position - race_forward * 2f,   Quaternion.LookRotation(race_right,race_forward)) as GameObject; //don't think i didn't see that -90
+            GameObject didem = Instantiate(poofs, transform.position - race_forward * 2f, Quaternion.LookRotation(race_right, race_forward)) as GameObject; //don't think i didn't see that -90
             pooferinos[didem] = true;
         }
     }
@@ -125,15 +161,42 @@ public class balloon_base : MonoBehaviour {
         }
     }
 
+    void setCorrectPowerupImage() {
+        powerupimage.enabled = true;
+        switch (powerup) {
+            case PowerUp.fire_ball:
+                powerupimage.sprite = iconFire;
+                break;
+            case PowerUp.Wind_suck:
+                powerupimage.sprite = iconWind;
+                break;
+            case PowerUp.rocket_boost:
+                powerupimage.sprite = iconSpeed;
+                break;
+            case PowerUp.wind_blast:
+                powerupimage.sprite = iconWind;
+                break;
+            default:
+                powerupimage.enabled = false;
+                break;
+        }
+    }
+
     // Use this for initialization
     void Start() {
+        UICANVAS = GameObject.FindGameObjectWithTag("UI");
+        GameObject g = Instantiate(powerupUI) as GameObject;
+        g.transform.SetParent(UICANVAS.transform);
+        poweruptransform = g.transform;
+        powerupimage = g.GetComponent<Image>();
+
         my_inputs.up = string.Format("Up{0}", my_number);
         my_inputs.vert = string.Format("Vertical{0}", my_number);
         my_inputs.hor = string.Format("Horizontal{0}", my_number);
         my_inputs.fire = string.Format("Fire{0}", my_number);
         flameup = gameObject.transform.Find("Flame").gameObject.GetComponent<ParticleSystem>();
         speedboost = gameObject.transform.Find("Speed").gameObject.GetComponent<ParticleSystem>();
-        spawn = gameObject.transform.Find("Flame").gameObject;
+        spawn = gameObject.transform.Find("spawn").gameObject;
         balloon_layer = LayerMask.GetMask("Balloon");
 
         life = 1;
@@ -143,10 +206,11 @@ public class balloon_base : MonoBehaviour {
         verT = verticalThrust;
         speedboost.enableEmission = false;
         size = transform.localScale;
-        powerup = PowerUp.fire_ball;
+        powerup = PowerUp.wind_blast;
 
         StartCoroutine(makepoofs());
 
+        setCorrectPowerupImage();
     }
 
 
@@ -208,6 +272,8 @@ public class balloon_base : MonoBehaviour {
         */
         if (fire)
             usePowerup();
+
+        AlignUIPowerup();
     }
 
     // Update is called once per frame
@@ -215,17 +281,19 @@ public class balloon_base : MonoBehaviour {
         up = Input.GetAxis(my_inputs.up);
         v = Input.GetAxis(my_inputs.vert);
         h = Input.GetAxis(my_inputs.hor);
-        /*
-          fire_float = Input.GetAxis(my_inputs.fire);
-          if (fire_float > 0)
-              fire = true;
-          else
-          {
-              fire = false;
-          }
-         * */
+        fire_float = Input.GetAxis(my_inputs.fire);
+        if (fire_float > 0)
+            fire_float = Input.GetAxisRaw(my_inputs.fire);
+        if (fire_float > 0 && !fire_pressed) {
+            fire = true;
+            fire_pressed = true;
+        } else {
+            fire = false;
+        }
 
-
+        if (fire_float <= 0) {
+            fire_pressed = false;
+        }
     }
 
     Coroutine boostingcr;
@@ -249,36 +317,47 @@ public class balloon_base : MonoBehaviour {
     }
      */
     public void OnTriggerEnter(Collider coll) {
-        /*
-         if (coll.tag == "Boost") {
-             if (pooferinos.ContainsKey(coll.gameObject))
-             {
-                 if(pooferinos.Count > 100)
-                 {
-                     pooferinos.Clear();
-                 }
-                 return;
-             }
-             boost();
-         }
-         if (coll.tag == "Pickups") {
-             float dice = Random.value;
-             if (dice < 0.33) {
-                 pickupPowerup(PowerUp.fire_ball);
-             } else if (dice < 0.66) {
-                 pickupPowerup(PowerUp.rocket_boost);
-             } else {
-                 pickupPowerup(PowerUp.wind_blast);
-             }
-             Destroy(coll.gameObject);
-         }
-         */
+        if (coll.tag == "Boost") {
+            if (pooferinos.ContainsKey(coll.gameObject.transform.parent.gameObject)) {
+                if (pooferinos.Count > 100) {
+                    pooferinos.Clear();
+                }
+                print("HIt your own poof");
+                return;
+            }
+            boost();
+        }
+        if (coll.tag == "Pickups") {
+            float dice = Random.value;
+            if (dice < 0.33) {
+                pickupPowerup(PowerUp.fire_ball);
+            } else if (dice < 0.66) {
+                pickupPowerup(PowerUp.rocket_boost);
+            } else {
+                pickupPowerup(PowerUp.wind_blast);
+            }
+            Destroy(coll.gameObject);
+
+            setCorrectPowerupImage();
+        }
+        if (coll.gameObject.tag == "Dangerous") {
+            // life--;
+            for (int c = 0; c < 3; ++c) {
+                GameObject g = Instantiate(bleed, transform.position + transform.up, transform.rotation) as GameObject;
+                g.transform.SetParent(this.transform);
+                explosions.Add(g);
+                //if (life != 0)
+                //Destroy(g, 2f);
+            }
+
+            deadBaloon = true;
+            StartCoroutine(dieAnimation());
+        }
         if (coll.tag == "DirectionChanger") {
             race_forward = coll.transform.forward;
             race_right = coll.transform.right;
             race_up = coll.transform.up;
         }
-
     }
 
     //manage power_ups
@@ -322,13 +401,10 @@ public class balloon_base : MonoBehaviour {
                     Invoke("suckWave", i / 100f);
                 }
                 Instantiate(absorb_wave, transform.position, Quaternion.identity);
-                powerup = PowerUp.none;
                 break;
             case PowerUp.rocket_boost:
                 ////speed up for a while
-                boost_count = 5;
-                horizontalThrust *= 5;
-                powerup = PowerUp.none;
+                boost();
                 break;
             case PowerUp.wind_blast:
                 //a force pushing everything away
@@ -336,14 +412,15 @@ public class balloon_base : MonoBehaviour {
                     Invoke("shockWave", i / 100f);
                 }
                 Instantiate(wind_wave, transform.position, Quaternion.identity);
-                powerup = PowerUp.none;
 
                 break;
             default:
                 //dont own a powerup
                 break;
         }
+        powerup = PowerUp.none;
 
+        setCorrectPowerupImage();
     }
 }
 
