@@ -9,6 +9,7 @@ TagManager:
   - Boost
   - Fire
   - Pickups
+  - DirectionChanger
   layers:
   - Default
   - TransparentFX

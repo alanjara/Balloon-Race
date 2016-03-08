@@ -6,10 +6,15 @@ public class cameraFollow : MonoBehaviour {
     public float FollowDistance = 7.5f;
     public float speed = 2f;
     public float distThres = .01f;
-    public Vector3 newPos;
+    public Vector3 targetPos;
     public float MAXy;
+    Vector3 new_pos;
     public static cameraFollow S;
     Vector3 cam_target_position;
+    Vector3 start_pos;
+    Quaternion start_rot;
+    float start_time;
+    Quaternion lookrot;
 
     public void GameOver() {
         Application.LoadLevel(Application.loadedLevel);
@@ -20,27 +25,32 @@ public class cameraFollow : MonoBehaviour {
         S = this;
     }
     void Start() {
-        newPos = Camera.main.transform.position;
-        newPos.y = target.transform.position.y + 4f;
-        newPos.z = target.transform.position.z - FollowDistance;
-        Camera.main.transform.position = newPos;
+        targetPos = Camera.main.transform.position;
+        targetPos.y = target.transform.position.y + 4f;
+        targetPos.z = target.transform.position.z - FollowDistance;
+        Camera.main.transform.position = targetPos;
+        start_time = Time.time;
     }
     void FixedUpdate() {
-
-        newPos = Camera.main.transform.position;
-        newPos.x = target.transform.position.x;
-        newPos.y = target.transform.position.y + 4f;
-        newPos.z = target.transform.position.z - FollowDistance;
-        if (newPos.y > MAXy - 1) {
-            newPos.y = MAXy - 1;
+        start_time = Time.time;
+        targetPos = Camera.main.transform.position;
+        targetPos = target.transform.position;
+    //    targetPos.x = target.transform.position.x;
+     //   targetPos.y = target.transform.position.y + 4f;
+      //  targetPos.z = target.transform.position.z - FollowDistance;
+        targetPos = targetPos - target.GetComponent<balloon_base>().race_forward * FollowDistance + 4f * target.GetComponent<balloon_base>().race_up;
+        if (targetPos.y > MAXy - 1) {
+            targetPos.y = MAXy - 1;
         }
 
 
-        cam_target_position = newPos;
+        cam_target_position = targetPos;
         Vector3 to_player = transform.position - cam_target_position;
+        start_pos = transform.position;
       //  to_player.z = 0;
-        if (to_player.magnitude > 1) {
-            Vector3 new_pos = transform.position;
+        
+        if (to_player.magnitude > 0) {
+             new_pos = transform.position;
             Vector3 displacement = cam_target_position - transform.position;
             float multiplier = 1;
             //displacement.z = 0;
@@ -51,21 +61,15 @@ public class cameraFollow : MonoBehaviour {
             while (to_player.magnitude < displacement.magnitude)
                 displacement = displacement * 0.9f;
             new_pos += displacement;
+            targetPos = new_pos;
             transform.position = new_pos;
-        }
+        } 
+         
 
-/*
-            if (Mathf.Abs(newPos.z - Camera.main.transform.position.z) > distThres)
-            {
-                Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newPos, Time.deltaTime * speed + Mathf.Abs(target.GetComponent<Rigidbody>().velocity.z) / 30f);
-            }
-            else
-            {
-                Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newPos, Time.deltaTime * speed);
-            }
-        */
-        Quaternion lookrot = Quaternion.LookRotation(target.transform.position - transform.position);
-
+        start_rot = transform.rotation;
+         lookrot = Quaternion.LookRotation(target.transform.position - transform.position);
+       //  if (Quaternion.Angle(start_rot, lookrot) < 1)
+     //        lookrot = start_rot;
         // Smoothly rotate towards the target point.
         transform.rotation = Quaternion.Slerp(transform.rotation, lookrot, speed * Time.deltaTime);
         // transform.LookAt (target.transform);

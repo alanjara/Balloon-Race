@@ -23,6 +23,10 @@ public class Basket : MonoBehaviour {
             joint.connectedBody = balloon.GetComponent<Rigidbody>();
             // joint.anchor = balloon.transform.Find(anchor).transform.localPosition;
             joint.connectedAnchor = balloon_anchors[index].localPosition;
+          //  joint.connectedAnchor = balloon.transform.localPosition - balloon.transform.up * 1;
+
+            joint.spring = 100;
+            joint.maxDistance = .5f;
             index++;
 
         }

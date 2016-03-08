@@ -822,12 +822,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firebolt: {fileID: 141530, guid: 369eee557c4d41c479225bf744fa6a5f, type: 2}
+  absorb_wave: {fileID: 119664, guid: df2924b2a22d637418f6b1af2cdf5db3, type: 2}
   wind_wave: {fileID: 119664, guid: 7dfdcd251aee5134c9d486599626b867, type: 2}
   my_number: 1
   verticalThrust: 60
   horizontalThrust: 20
   horizontalThrustBoosted: 40
-  risingForce: 5
+  risingForce: 10
   v: 0
   h: 0
   expansion: 0
@@ -926,7 +927,7 @@ SpringJoint:
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_EnablePreprocessing: 0
 --- !u!145 &14522344
 SpringJoint:
@@ -946,7 +947,7 @@ SpringJoint:
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_EnablePreprocessing: 0
 --- !u!145 &14539028
 SpringJoint:
@@ -966,7 +967,7 @@ SpringJoint:
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_EnablePreprocessing: 0
 --- !u!145 &14580212
 SpringJoint:
@@ -986,7 +987,7 @@ SpringJoint:
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_EnablePreprocessing: 0
 --- !u!198 &19809096
 ParticleSystem:
@@ -4087,6 +4088,18 @@ Prefab:
       propertyPath: respawn
       value: 
       objectReference: {fileID: 195910}
+    - target: {fileID: 0}
+      propertyPath: absorb_wave
+      value: 
+      objectReference: {fileID: 119664, guid: df2924b2a22d637418f6b1af2cdf5db3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_EnableCollision
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: risingForce
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 195910}

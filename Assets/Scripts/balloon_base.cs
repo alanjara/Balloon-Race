@@ -37,6 +37,14 @@ public class balloon_base : MonoBehaviour {
     public LayerMask balloon_layer;
     public GameObject minilightning;
     controls my_inputs;
+    public Vector3 race_forward = new Vector3(0, 0, 1);
+    public Vector3 race_right = new Vector3(1, 0, 0);
+    public Vector3 race_up = new Vector3(0, 1, 0);
+    public void setControlDirection(Transform setter) {
+        race_forward = setter.forward;
+        race_right = setter.right;
+        race_up = setter.up;
+    }
 
     struct controls {
         public string up, vert, hor;
@@ -101,12 +109,10 @@ public class balloon_base : MonoBehaviour {
 
     public GameObject poofs;
     Dictionary<GameObject, bool> pooferinos = new Dictionary<GameObject, bool>();
-    IEnumerator makepoofs()
-    {
-        while (true)
-        {
+    IEnumerator makepoofs() {
+        while (true) {
             yield return new WaitForSeconds(2f);
-            GameObject didem = Instantiate(poofs, transform.position - transform.forward * 2f, Quaternion.Euler(new Vector3(-90f, 0, 0))) as GameObject;
+            GameObject didem = Instantiate(poofs, transform.position - race_forward * 2f,   Quaternion.LookRotation(race_right,race_forward)) as GameObject; //don't think i didn't see that -90
             pooferinos[didem] = true;
         }
     }
@@ -140,6 +146,7 @@ public class balloon_base : MonoBehaviour {
         powerup = PowerUp.fire_ball;
 
         StartCoroutine(makepoofs());
+
     }
 
 
@@ -178,13 +185,13 @@ public class balloon_base : MonoBehaviour {
                 flameup.enableEmission = false;
         }
         if (v > 0)
-            rb.AddForceAtPosition(Vector3.forward * horT, transform.position, ForceMode.Acceleration);
+            rb.AddForceAtPosition(race_forward * horT, transform.position, ForceMode.Acceleration);
         else if (v < 0)
-            rb.AddForceAtPosition(Vector3.forward * -horT, transform.position, ForceMode.Acceleration);
+            rb.AddForceAtPosition(race_forward * -horT, transform.position, ForceMode.Acceleration);
         if (h > 0)
-            rb.AddForceAtPosition(Vector3.right * horT, transform.position, ForceMode.Acceleration);
+            rb.AddForceAtPosition(race_right * horT, transform.position, ForceMode.Acceleration);
         else if (h < 0)
-            rb.AddForceAtPosition(Vector3.right * -horT, transform.position, ForceMode.Acceleration);
+            rb.AddForceAtPosition(race_right * -horT, transform.position, ForceMode.Acceleration);
 
         if (floatForce > risingForce + verticalThrust)
             floatForce = risingForce + verticalThrust;
@@ -208,13 +215,16 @@ public class balloon_base : MonoBehaviour {
         up = Input.GetAxis(my_inputs.up);
         v = Input.GetAxis(my_inputs.vert);
         h = Input.GetAxis(my_inputs.hor);
-        fire_float = Input.GetAxis(my_inputs.fire);
-        if (fire_float > 0)
-            fire = true;
-        else
-        {
-            fire = false;
-        }
+        /*
+          fire_float = Input.GetAxis(my_inputs.fire);
+          if (fire_float > 0)
+              fire = true;
+          else
+          {
+              fire = false;
+          }
+         * */
+
 
     }
 
@@ -239,28 +249,36 @@ public class balloon_base : MonoBehaviour {
     }
      */
     public void OnTriggerEnter(Collider coll) {
-        if (coll.tag == "Boost") {
-            if (pooferinos.ContainsKey(coll.gameObject))
-            {
-                if(pooferinos.Count > 100)
-                {
-                    pooferinos.Clear();
-                }
-                return;
-            }
-            boost();
+        /*
+         if (coll.tag == "Boost") {
+             if (pooferinos.ContainsKey(coll.gameObject))
+             {
+                 if(pooferinos.Count > 100)
+                 {
+                     pooferinos.Clear();
+                 }
+                 return;
+             }
+             boost();
+         }
+         if (coll.tag == "Pickups") {
+             float dice = Random.value;
+             if (dice < 0.33) {
+                 pickupPowerup(PowerUp.fire_ball);
+             } else if (dice < 0.66) {
+                 pickupPowerup(PowerUp.rocket_boost);
+             } else {
+                 pickupPowerup(PowerUp.wind_blast);
+             }
+             Destroy(coll.gameObject);
+         }
+         */
+        if (coll.tag == "DirectionChanger") {
+            race_forward = coll.transform.forward;
+            race_right = coll.transform.right;
+            race_up = coll.transform.up;
         }
-        if (coll.tag == "Pickups") {
-            float dice = Random.value;
-            if (dice < 0.33) {
-                pickupPowerup(PowerUp.fire_ball);
-            } else if (dice < 0.66) {
-                pickupPowerup(PowerUp.rocket_boost);
-            } else {
-                pickupPowerup(PowerUp.wind_blast);
-            }
-            Destroy(coll.gameObject);
-        }
+
     }
 
     //manage power_ups
@@ -280,12 +298,10 @@ public class balloon_base : MonoBehaviour {
         }
     }
 
-    private void suckWave()
-    {
+    private void suckWave() {
         Vector3 explosionPos = transform.position;
         Collider[] colliders = Physics.OverlapSphere(explosionPos, wind_radius, balloon_layer);
-        foreach (Collider hit in colliders)
-        {
+        foreach (Collider hit in colliders) {
             Rigidbody rb = hit.GetComponent<Rigidbody>();
             if (hit.gameObject == gameObject)
                 continue;
@@ -302,8 +318,7 @@ public class balloon_base : MonoBehaviour {
                 break;
             case PowerUp.Wind_suck:
                 // a force pulling everything together
-                for (int i = 0; i < 100; i ++)
-                {
+                for (int i = 0; i < 100; i++) {
                     Invoke("suckWave", i / 100f);
                 }
                 Instantiate(absorb_wave, transform.position, Quaternion.identity);
