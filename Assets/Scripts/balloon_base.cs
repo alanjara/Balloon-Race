@@ -342,6 +342,21 @@ public class balloon_base : MonoBehaviour {
 
             setCorrectPowerupImage();
         }
+        if (coll.gameObject.tag == "Dangerous")
+        {
+            // life--;
+            for (int c = 0; c < 3; ++c)
+            {
+                GameObject g = Instantiate(bleed, transform.position + transform.up, transform.rotation) as GameObject;
+                g.transform.SetParent(this.transform);
+                explosions.Add(g);
+                //if (life != 0)
+                //Destroy(g, 2f);
+            }
+
+            deadBaloon = true;
+            StartCoroutine(dieAnimation());
+        }
     }
 
     //manage power_ups
