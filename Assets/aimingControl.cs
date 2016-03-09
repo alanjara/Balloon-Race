@@ -8,8 +8,8 @@ public class aimingControl : MonoBehaviour {
     public GameObject target;
     public Camera camera;
     public balloon_base balloon;
-    private bool ifAim = true;
-    private bool angleSmall = true;
+    public bool ifAim = true;
+    public bool angleSmall = true;
 	// Use this for initialization
 	void Start () {
         

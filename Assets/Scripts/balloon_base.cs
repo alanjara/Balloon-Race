@@ -411,9 +411,11 @@ public class balloon_base : MonoBehaviour {
         switch (powerup) {
             case PowerUp.fire_ball:
                 //shoot a series of fireballs
-                GameObject fire_bolt = Instantiate(firebolt, spawn.transform.position, spawn.transform.rotation) as GameObject;
-                fire_bolt.GetComponent<DigitalRuby.PyroParticles.FireProjectileScript>().setTarget(aim_control.target);
-                aim_control.setIfAim(false);
+                if (aim_control.ifAim && aim_control.angleSmall)
+                {
+                    GameObject fire_bolt = Instantiate(firebolt, transform.position+race_forward*2, spawn.transform.rotation) as GameObject;
+                    fire_bolt.GetComponent<DigitalRuby.PyroParticles.FireProjectileScript>().setTarget(aim_control.target);
+                }
                 break;
             case PowerUp.Wind_suck:
                 // a force pulling everything together
@@ -438,7 +440,6 @@ public class balloon_base : MonoBehaviour {
                 //dont own a powerup
                 break;
         }
-        powerup = PowerUp.none;
 
         setCorrectPowerupImage();
     }

@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7499b0293fb8e4596bcf1d354c4182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aim_control: {fileID: 0}
   UICANVAS: {fileID: 0}
   firebolt: {fileID: 141530, guid: 369eee557c4d41c479225bf744fa6a5f, type: 2}
   absorb_wave: {fileID: 0}
@@ -222,16 +223,22 @@ MonoBehaviour:
   max_height_modifier: 300
   LastCheckpoint: {x: -5, y: 5, z: -22}
   up: 0
+  powerup: 0
   bleed: {fileID: 113984, guid: 3046341e43796774ca8b6f684b4baa66, type: 2}
   balloon_layer:
     serializedVersion: 2
     m_Bits: 0
   minilightning: {fileID: 173134, guid: 72497d424f2e9a04d85223eea3e72c06, type: 2}
   dangerIcon: {fileID: 121970, guid: 842e2f272e07ebd499ad8ca6fc13e52d, type: 2}
+  race_forward: {x: 0, y: 0, z: 1}
+  race_right: {x: 1, y: 0, z: 0}
   powerupUI: {fileID: 0}
+  race_up: {x: 0, y: 1, z: 0}
   iconFire: {fileID: 0}
   iconWind: {fileID: 0}
   iconSpeed: {fileID: 0}
+  LEFTPOWERUP: {fileID: 0}
+  RIGHTPOWERUP: {fileID: 0}
   respawn: {fileID: 1333977233}
   immune: 0
   poofs: {fileID: 139010, guid: 375d1b860143b4047a2a14a4351c82d1, type: 2}
@@ -3827,6 +3834,52 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1166858417}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1313040163
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 406364, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 12.342285
+      objectReference: {fileID: 0}
+    - target: {fileID: 406364, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 31.267374
+      objectReference: {fileID: 0}
+    - target: {fileID: 406364, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -75.41201
+      objectReference: {fileID: 0}
+    - target: {fileID: 406364, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 406364, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 406364, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 406364, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 406364, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 195910, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: m_Name
+      value: HotAirBalloon (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1333977233
 GameObject:
   m_ObjectHideFlags: 0
@@ -3855,7 +3908,7 @@ Transform:
   - {fileID: 255086823}
   - {fileID: 6977663}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &1417907962
 GameObject:
   m_ObjectHideFlags: 0
@@ -4060,7 +4113,7 @@ MonoBehaviour:
   FollowDistance: 7.5
   speed: 1.5
   distThres: 1
-  newPos: {x: 0, y: 0, z: 0}
+  targetPos: {x: 0, y: 0, z: 0}
   MAXy: 40
 --- !u!1 &1872484104
 GameObject:
@@ -4095,7 +4148,7 @@ Transform:
   - {fileID: 2066622795}
   - {fileID: 1417907963}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1948148895
 GameObject:
   m_ObjectHideFlags: 0
