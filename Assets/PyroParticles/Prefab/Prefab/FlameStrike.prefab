@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11483642}
   m_Layer: 8
   m_Name: FlameStrikeCollider
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ GameObject:
   - 108: {fileID: 10819714}
   m_Layer: 8
   m_Name: FlameStrikeLight
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ GameObject:
   - 199: {fileID: 19975054}
   m_Layer: 8
   m_Name: FlameStrikeMainColumn
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ GameObject:
   - 199: {fileID: 19904568}
   m_Layer: 8
   m_Name: FlameStrikeExplosion
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +82,7 @@ GameObject:
   - 114: {fileID: 11456544}
   m_Layer: 8
   m_Name: FlameStrike
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ GameObject:
   - 199: {fileID: 19911960}
   m_Layer: 8
   m_Name: FlameStrikeOrigin
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,7 @@ GameObject:
   - 199: {fileID: 19937226}
   m_Layer: 8
   m_Name: FlameStrikeLightColumn
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -500,6 +500,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   ProjectileDestroyParticleSystemsOnCollision: []
+  target: {fileID: 0}
 --- !u!114 &11483642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6517,6 +6518,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Dangerous
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -14,7 +14,7 @@ public class balloon_base : MonoBehaviour {
     public int my_number;
     //wind blast consts
     private const float wind_power = 0.5f;
-    private const float wind_radius = 50f;
+    private const float wind_radius = 200f;
     GameObject spawn;
     public float verticalThrust = 60;
     public float horizontalThrust = 20;
@@ -420,7 +420,7 @@ public class balloon_base : MonoBehaviour {
                     fire_bolt.GetComponent<DigitalRuby.PyroParticles.FireProjectileScript>().setTarget(aim_control.target);
                     aim_control.ifAim = false;
 
-                    powerup = PowerUp.none;
+                    
                 }
                 break;
             case PowerUp.Wind_suck:
@@ -451,6 +451,7 @@ public class balloon_base : MonoBehaviour {
                 //dont own a powerup
                 break;
         }
+        
         setCorrectPowerupImage();
     }
 }

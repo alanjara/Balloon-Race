@@ -12,7 +12,7 @@ GameObject:
   - 198: {fileID: 19883674}
   m_Layer: 8
   m_Name: RingOfFireSparks
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ GameObject:
   - 198: {fileID: 19821370}
   m_Layer: 8
   m_Name: RingOfFireSecondaryFlame
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,7 @@ GameObject:
   - 82: {fileID: 8281866}
   m_Layer: 8
   m_Name: RingOfFireSound
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +61,7 @@ GameObject:
   - 108: {fileID: 10847730}
   m_Layer: 8
   m_Name: RingOfFireLight
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   - 114: {fileID: 11469812}
   m_Layer: 8
   m_Name: RingOfFire
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ GameObject:
   - 198: {fileID: 19869400}
   m_Layer: 8
   m_Name: RingOfFireSmoke
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,7 @@ GameObject:
   - 198: {fileID: 19886008}
   m_Layer: 8
   m_Name: RingOfFireFlame
-  m_TagString: Untagged
+  m_TagString: Dangerous
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,7 +357,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Seed: 100
   IntensityModifier: 1
-  IntensityMaxRange: {x: 0, y: 8}
+  IntensityMaxRange:
+    Minimum: 0
+    Maximum: 8
 --- !u!114 &11471502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6403,7 +6405,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Dangerous
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 168262}
