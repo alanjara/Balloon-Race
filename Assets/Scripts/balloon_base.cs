@@ -58,9 +58,16 @@ public class balloon_base : MonoBehaviour {
     public Sprite iconFire, iconWind, iconSpeed;
     controls my_inputs;
 
-    public void AlignUIPowerup() {
-        poweruptransform.position = Camera.allCameras[my_number - 1].WorldToScreenPoint(transform.position - 2 * Vector3.up);
+    public GameObject LEFTPOWERUP, RIGHTPOWERUP;
 
+    public void AlignUIPowerup() {
+        if(my_number == 2)
+        {
+            poweruptransform.position = LEFTPOWERUP.transform.position;
+        } else
+        {
+            poweruptransform.position = RIGHTPOWERUP.transform.position;
+        }
     }
 
     struct controls {
@@ -193,6 +200,9 @@ public class balloon_base : MonoBehaviour {
         g.transform.SetParent(UICANVAS.transform);
         poweruptransform = g.transform;
         powerupimage = g.GetComponent<Image>();
+
+        LEFTPOWERUP = GameObject.Find("LEFTPOWERUP");
+        RIGHTPOWERUP = GameObject.Find("RIGHTPOWERUP");
 
         my_inputs.up = string.Format("Up{0}", my_number);
         my_inputs.vert = string.Format("Vertical{0}", my_number);

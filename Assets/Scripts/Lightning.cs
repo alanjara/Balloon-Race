@@ -2,24 +2,40 @@
 using System.Collections;
 
 public class Lightning : MonoBehaviour {
-    GameObject light;
+    GameObject lightaa;
+    Collider col;
     public float interval = 3f;
     public float duration = 0.5f;
+    Light lite;
 	// Use this for initialization
 	void Start () {
-        light = transform.GetChild(0).gameObject;
+        lightaa = transform.GetChild(0).gameObject;
+        lite = lightaa.GetComponent<Light>();
+        col = lightaa.GetComponent<Collider>();
         StartCoroutine(lightning());
-	}
+        //light.SetActive(true);
+        // col.enabled = false;
+    }
 	
     IEnumerator lightning()
     {
         while (true)
         {
-            light.SetActive(true);
+            lightaa.SetActive(true);
 
+            col.enabled = false;
+            lite.enabled = true;
+
+            yield return new WaitForSeconds(duration * 2);
+
+            col.enabled = true;
             yield return new WaitForSeconds(duration);
-            light.SetActive(false);
 
+            col.enabled = false;
+
+            lite.enabled = false;
+
+            lightaa.SetActive(false);
             yield return new WaitForSeconds(interval);
         }
     }
