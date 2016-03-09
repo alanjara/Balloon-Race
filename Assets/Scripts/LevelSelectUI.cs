@@ -29,12 +29,12 @@ public class LevelSelectUI : MonoBehaviour {
 	}
 		
 	void loadLevel1(){
-		SceneManager.LoadScene ("Scene_Alan");
+		SceneManager.LoadScene ("Scene_Stali");
 	}
 	void loadLevel2(){
-		SceneManager.LoadScene ("Scene_Alan");
+		SceneManager.LoadScene ("testVol");
 	}
 	void loadLevel3(){
-		SceneManager.LoadScene ("CityAlanLatest");
+		SceneManager.LoadScene ("CityComplete");
 	}
 }
