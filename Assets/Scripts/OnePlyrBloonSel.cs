@@ -21,6 +21,8 @@ public class OnePlyrBloonSel : MonoBehaviour {
 	public int meshCount;
 	// Use this for initialization
 	void Start () {
+		PersistentGameData.numPlayers = 1;
+
 		balloon = GameObject.Find ("HotAirBalloon/balloon");
 		basket = GameObject.Find ("HotAirBalloon/basket");
 		GoButton.onClick.AddListener(() => loadOnePlayer());
@@ -44,7 +46,7 @@ public class OnePlyrBloonSel : MonoBehaviour {
 	}
 	
 	void loadOnePlayer(){
-		SceneManager.LoadScene ("SceneAlan");
+		SceneManager.LoadScene ("LevelSelect");
 	}
 
 	void incrementColor(){
@@ -52,6 +54,7 @@ public class OnePlyrBloonSel : MonoBehaviour {
 		if (colorCount >= colorlist.Count)
 			colorCount = 0;
 		balloon.GetComponent<Renderer> ().material.color = colorlist[colorCount];
+		PersistentGameData.player1balloonColor = colorCount;
 	}
 
 	void decrementColor(){
@@ -59,6 +62,7 @@ public class OnePlyrBloonSel : MonoBehaviour {
 		if (colorCount < 0)
 			colorCount = colorlist.Count - 1;
 		balloon.GetComponent<Renderer> ().material.color = colorlist[colorCount];
+		PersistentGameData.player1balloonColor = colorCount;
 	}
 
 	void incrementBalloon(){
@@ -66,6 +70,7 @@ public class OnePlyrBloonSel : MonoBehaviour {
 		if (meshCount >= meshlist.Count)
 			meshCount = 0;
 		balloon.GetComponent<MeshFilter> ().mesh = meshlist [meshCount];
+		PersistentGameData.player1balloonModel = meshCount;
 	}
 
 	void decrementBalloon(){
@@ -73,5 +78,6 @@ public class OnePlyrBloonSel : MonoBehaviour {
 		if (meshCount < 0)
 			meshCount = meshlist.Count - 1;
 		balloon.GetComponent<MeshFilter> ().mesh = meshlist [meshCount];
+		PersistentGameData.player1balloonModel = meshCount;
 	}
 }
