@@ -764,7 +764,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197242}
   serializedVersion: 2
-  m_Mass: 0.01
+  m_Mass: 0.05
   m_Drag: 0.1
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -798,7 +798,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
-  m_Mesh: {fileID: 4300000, guid: 93ca1ce2717a2104791988eeb41adbd9, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 46a4d5569122cac41b3ee4a5df98925c, type: 3}
 --- !u!75 &7506478
 ConstantForce:
   m_ObjectHideFlags: 1
@@ -821,18 +821,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7499b0293fb8e4596bcf1d354c4182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UICANVAS: {fileID: 0}
   firebolt: {fileID: 141530, guid: 369eee557c4d41c479225bf744fa6a5f, type: 2}
   absorb_wave: {fileID: 119664, guid: df2924b2a22d637418f6b1af2cdf5db3, type: 2}
   wind_wave: {fileID: 119664, guid: 7dfdcd251aee5134c9d486599626b867, type: 2}
   my_number: 1
-  verticalThrust: 60
-  horizontalThrust: 20
-  horizontalThrustBoosted: 40
+  verticalThrust: 110
+  horizontalThrust: 80
+  horizontalThrustBoosted: 120
   risingForce: 10
+  fire_float: 0
   v: 0
   h: 0
   expansion: 0
-  max_height_modifier: 300
+  max_height_modifier: 1500
   LastCheckpoint: {x: -5, y: 5, z: -22}
   up: 0
   bleed: {fileID: 113984, guid: 3046341e43796774ca8b6f684b4baa66, type: 2}
@@ -840,7 +842,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   minilightning: {fileID: 173134, guid: 72497d424f2e9a04d85223eea3e72c06, type: 2}
+  dangerIcon: {fileID: 121970, guid: 8fa50037600b32c41b7248728db2f167, type: 2}
+  race_forward: {x: 0, y: 0, z: 1}
+  race_right: {x: 1, y: 0, z: 0}
+  powerupUI: {fileID: 106932, guid: 915f5ddaf6be0f14d820250276675584, type: 2}
+  race_up: {x: 0, y: 1, z: 0}
+  iconFire: {fileID: 21300000, guid: 14f034bcc145a37408d747166c8d7972, type: 3}
+  iconWind: {fileID: 21300000, guid: 96bb3732453ece14cbb5664ef42edd94, type: 3}
+  iconSpeed: {fileID: 21300000, guid: 67badea654309634788ced0ee611f29d, type: 3}
   respawn: {fileID: 195910}
+  immune: 0
   poofs: {fileID: 139010, guid: 375d1b860143b4047a2a14a4351c82d1, type: 2}
 --- !u!114 &11475782
 MonoBehaviour:
@@ -927,7 +938,7 @@ SpringJoint:
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_EnablePreprocessing: 0
 --- !u!145 &14522344
 SpringJoint:
@@ -947,7 +958,7 @@ SpringJoint:
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_EnablePreprocessing: 0
 --- !u!145 &14539028
 SpringJoint:
@@ -967,7 +978,7 @@ SpringJoint:
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_EnablePreprocessing: 0
 --- !u!145 &14580212
 SpringJoint:
@@ -987,7 +998,7 @@ SpringJoint:
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_EnablePreprocessing: 0
 --- !u!198 &19809096
 ParticleSystem:
@@ -4094,11 +4105,58 @@ Prefab:
       objectReference: {fileID: 119664, guid: df2924b2a22d637418f6b1af2cdf5db3, type: 2}
     - target: {fileID: 0}
       propertyPath: m_EnableCollision
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: risingForce
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: iconFire
+      value: 
+      objectReference: {fileID: 21300000, guid: 14f034bcc145a37408d747166c8d7972,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: iconWind
+      value: 
+      objectReference: {fileID: 21300000, guid: 96bb3732453ece14cbb5664ef42edd94,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: iconSpeed
+      value: 
+      objectReference: {fileID: 21300000, guid: 67badea654309634788ced0ee611f29d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: dangerIcon
+      value: 
+      objectReference: {fileID: 121970, guid: 8fa50037600b32c41b7248728db2f167, type: 2}
+    - target: {fileID: 0}
+      propertyPath: powerupUI
+      value: 
+      objectReference: {fileID: 106932, guid: 915f5ddaf6be0f14d820250276675584, type: 2}
+    - target: {fileID: 0}
+      propertyPath: horizontalThrust
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: horizontalThrustBoosted
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: max_height_modifier
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: verticalThrust
+      value: 110
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -25,7 +25,7 @@ public class Basket : MonoBehaviour {
             joint.connectedAnchor = balloon_anchors[index].localPosition;
           //  joint.connectedAnchor = balloon.transform.localPosition - balloon.transform.up * 1;
 
-            joint.spring = 100;
+            joint.spring = 5;
             joint.maxDistance = .5f;
             index++;
 

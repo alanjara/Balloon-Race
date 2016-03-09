@@ -42,6 +42,7 @@ public class balloon_base : MonoBehaviour {
     public GameObject dangerIcon;
     public Vector3 race_forward = new Vector3(0, 0, 1);
     public Vector3 race_right = new Vector3(1, 0, 0);
+    Vector3 forward_control = new Vector3(0, 0, 1);
     public GameObject powerupUI;
     public Vector3 race_up = new Vector3(0, 1, 0);
     Transform poweruptransform;
@@ -49,6 +50,9 @@ public class balloon_base : MonoBehaviour {
         race_forward = setter.forward;
         race_right = setter.right;
         race_up = setter.up;
+        forward_control = race_forward;
+        forward_control.y = 0;
+        forward_control.Normalize();
     }
     Image powerupimage;
     public Sprite iconFire, iconWind, iconSpeed;
@@ -241,7 +245,7 @@ public class balloon_base : MonoBehaviour {
             floatForce = risingForce;
         if (up > 0) {
             // rb.AddForceAtPosition(Vector3.up * verticalThrust, transform.up+transform.position,ForceMode.Acceleration);
-            floatForce += verticalThrust;
+            floatForce += verticalThrust*up + (horT-horizontalThrust)*4;
             flameup.enableEmission = true;
             up = 0;
         } else {
@@ -249,9 +253,9 @@ public class balloon_base : MonoBehaviour {
                 flameup.enableEmission = false;
         }
         if (v > 0)
-            rb.AddForceAtPosition(race_forward * horT, transform.position, ForceMode.Acceleration);
+            rb.AddForceAtPosition(forward_control * horT, transform.position, ForceMode.Acceleration);
         else if (v < 0)
-            rb.AddForceAtPosition(race_forward * -horT, transform.position, ForceMode.Acceleration);
+            rb.AddForceAtPosition(forward_control * -horT, transform.position, ForceMode.Acceleration);
         if (h > 0)
             rb.AddForceAtPosition(race_right * horT, transform.position, ForceMode.Acceleration);
         else if (h < 0)
@@ -354,9 +358,8 @@ public class balloon_base : MonoBehaviour {
             StartCoroutine(dieAnimation());
         }
         if (coll.tag == "DirectionChanger") {
-            race_forward = coll.transform.forward;
-            race_right = coll.transform.right;
-            race_up = coll.transform.up;
+
+            setControlDirection(coll.transform.parent.Find("Direction").transform);
         }
     }
 
