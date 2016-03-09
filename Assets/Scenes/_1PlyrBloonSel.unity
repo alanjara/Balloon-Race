@@ -41,7 +41,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -2622,7 +2622,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 406364, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -22.88
+      value: -23.032
       objectReference: {fileID: 0}
     - target: {fileID: 406364, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2656,7 +2656,8 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 3.66
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11459002, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2016456293

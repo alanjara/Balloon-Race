@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
-//	[RequireComponent(typeof(Rigidbody))]
-//	[RequireComponent(typeof(CapsuleCollider))]
+	[RequireComponent(typeof(Rigidbody))]
+	[RequireComponent(typeof(CapsuleCollider))]
 	[RequireComponent(typeof(Animator))]
-	public class ThirdPersonCharacter : MonoBehaviour
+	public class ThirdPersonCharacter1 : MonoBehaviour
 	{
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
@@ -16,7 +16,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
 
-		//Rigidbody m_Rigidbody;
+		Rigidbody m_Rigidbody;
 		Animator m_Animator;
 		bool m_IsGrounded;
 		float m_OrigGroundCheckDistance;
@@ -24,21 +24,21 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		float m_TurnAmount;
 		float m_ForwardAmount;
 		Vector3 m_GroundNormal;
-		//float m_CapsuleHeight;
-		//Vector3 m_CapsuleCenter;
-		//CapsuleCollider m_Capsule;
+		float m_CapsuleHeight;
+		Vector3 m_CapsuleCenter;
+		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
 
 		void Start()
 		{
 			m_Animator = GetComponent<Animator>();
-			//m_Rigidbody = GetComponent<Rigidbody>();
-			//m_Capsule = GetComponent<CapsuleCollider>();
-			//m_CapsuleHeight = m_Capsule.height;
-			//m_CapsuleCenter = m_Capsule.center;
+			m_Rigidbody = GetComponent<Rigidbody>();
+			m_Capsule = GetComponent<CapsuleCollider>();
+			m_CapsuleHeight = m_Capsule.height;
+			m_CapsuleCenter = m_Capsule.center;
 
-			//m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 		}
 
@@ -81,22 +81,22 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (m_IsGrounded && crouch)
 			{
 				if (m_Crouching) return;
-				//m_Capsule.height = m_Capsule.height / 2f;
-				//m_Capsule.center = m_Capsule.center / 2f;
+				m_Capsule.height = m_Capsule.height / 2f;
+				m_Capsule.center = m_Capsule.center / 2f;
 				m_Crouching = true;
 			}
 			else
 			{
-//				Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
-//				float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
-//				if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, ~0, QueryTriggerInteraction.Ignore))
-//				{
-//					m_Crouching = true;
-//					return;
-//				}
-//				m_Capsule.height = m_CapsuleHeight;
-//				m_Capsule.center = m_CapsuleCenter;
-//				m_Crouching = false;
+				Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
+				float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
+				if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, ~0, QueryTriggerInteraction.Ignore))
+				{
+					m_Crouching = true;
+					return;
+				}
+				m_Capsule.height = m_CapsuleHeight;
+				m_Capsule.center = m_CapsuleCenter;
+				m_Crouching = false;
 			}
 		}
 
@@ -122,10 +122,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
 			m_Animator.SetBool("Crouch", m_Crouching);
 			m_Animator.SetBool("OnGround", m_IsGrounded);
-//			if (!m_IsGrounded)
-//			{
-//				m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
-//			}
+			if (!m_IsGrounded)
+			{
+				m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
+			}
 
 			// calculate which leg is behind, so as to leave that leg trailing in the jump animation
 			// (This code is reliant on the specific run cycle offset in our animations,
@@ -155,11 +155,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		void HandleAirborneMovement()
 		{
-//			// apply extra gravity from multiplier:
-//			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
-//			m_Rigidbody.AddForce(extraGravityForce);
-//
-//			m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
+			// apply extra gravity from multiplier:
+			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
+			m_Rigidbody.AddForce(extraGravityForce);
+
+			m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
 		}
 
 
@@ -169,7 +169,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
 			{
 				// jump!
-				//m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
+				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
 				m_IsGrounded = false;
 				m_Animator.applyRootMotion = false;
 				m_GroundCheckDistance = 0.1f;
@@ -188,14 +188,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		{
 			// we implement this function to override the default root motion.
 			// this allows us to modify the positional speed before it's applied.
-//			if (m_IsGrounded && Time.deltaTime > 0)
-//			{
-//				Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
-//
-//				// we preserve the existing y part of the current velocity.
-//				v.y = m_Rigidbody.velocity.y;
-//				m_Rigidbody.velocity = v;
-//			}
+			if (m_IsGrounded && Time.deltaTime > 0)
+			{
+				Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
+
+				// we preserve the existing y part of the current velocity.
+				v.y = m_Rigidbody.velocity.y;
+				m_Rigidbody.velocity = v;
+			}
 		}
 
 
