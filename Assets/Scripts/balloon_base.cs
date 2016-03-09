@@ -13,7 +13,7 @@ public class balloon_base : MonoBehaviour {
     public GameObject wind_wave;
     public int my_number;
     //wind blast consts
-    private const float wind_power = 0.2f;
+    private const float wind_power = 0.5f;
     private const float wind_radius = 50f;
     GameObject spawn;
     public float verticalThrust = 60;
@@ -56,7 +56,7 @@ public class balloon_base : MonoBehaviour {
         forward_control.Normalize();
     }
     Image powerupimage;
-    public Sprite iconFire, iconWind, iconSpeed;
+    public Sprite iconFire, iconWind, iconSpeed, iconSuck;
     controls my_inputs;
 
     public GameObject LEFTPOWERUP, RIGHTPOWERUP;
@@ -180,7 +180,7 @@ public class balloon_base : MonoBehaviour {
                 powerupimage.sprite = iconFire;
                 break;
             case PowerUp.Wind_suck:
-                powerupimage.sprite = iconWind;
+                powerupimage.sprite = iconSuck;
                 break;
             case PowerUp.rocket_boost:
                 powerupimage.sprite = iconSpeed;
@@ -221,7 +221,7 @@ public class balloon_base : MonoBehaviour {
         verT = verticalThrust;
         speedboost.enableEmission = false;
         size = transform.localScale;
-        powerup = PowerUp.fire_ball;
+        powerup = PowerUp.rocket_boost;
 
         StartCoroutine(makepoofs());
 
@@ -344,12 +344,15 @@ public class balloon_base : MonoBehaviour {
         }
         if (coll.tag == "Pickups") {
             float dice = Random.value;
-            if (dice < 0.33) {
+            if (dice < 0.25) {
                 pickupPowerup(PowerUp.fire_ball);
-            } else if (dice < 0.66) {
+            } else if (dice < 0.50) {
                 pickupPowerup(PowerUp.rocket_boost);
-            } else {
+            } else if(dice < 0.75){
                 pickupPowerup(PowerUp.wind_blast);
+            } else
+            {
+                pickupPowerup(PowerUp.Wind_suck);
             }
             Destroy(coll.gameObject);
 
@@ -415,6 +418,9 @@ public class balloon_base : MonoBehaviour {
                 {
                     GameObject fire_bolt = Instantiate(firebolt, transform.position+race_forward*2, spawn.transform.rotation) as GameObject;
                     fire_bolt.GetComponent<DigitalRuby.PyroParticles.FireProjectileScript>().setTarget(aim_control.target);
+                    aim_control.ifAim = false;
+
+                    powerup = PowerUp.none;
                 }
                 break;
             case PowerUp.Wind_suck:
@@ -423,10 +429,14 @@ public class balloon_base : MonoBehaviour {
                     Invoke("suckWave", i / 100f);
                 }
                 Instantiate(absorb_wave, transform.position, Quaternion.identity);
+
+                powerup = PowerUp.none;
                 break;
             case PowerUp.rocket_boost:
                 ////speed up for a while
                 boost();
+
+                powerup = PowerUp.none;
                 break;
             case PowerUp.wind_blast:
                 //a force pushing everything away
@@ -435,12 +445,12 @@ public class balloon_base : MonoBehaviour {
                 }
                 Instantiate(wind_wave, transform.position, Quaternion.identity);
 
+                powerup = PowerUp.none;
                 break;
             default:
                 //dont own a powerup
                 break;
         }
-
         setCorrectPowerupImage();
     }
 }

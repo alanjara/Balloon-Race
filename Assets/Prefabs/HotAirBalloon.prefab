@@ -819,7 +819,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 159870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dac3570d69c6964c874e166d87dac1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d82b33393ebc9a41b4337c16f145df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 0}
@@ -870,6 +870,7 @@ MonoBehaviour:
   iconFire: {fileID: 21300000, guid: 14f034bcc145a37408d747166c8d7972, type: 3}
   iconWind: {fileID: 21300000, guid: 96bb3732453ece14cbb5664ef42edd94, type: 3}
   iconSpeed: {fileID: 21300000, guid: 67badea654309634788ced0ee611f29d, type: 3}
+  iconSuck: {fileID: 21300000, guid: 1b24c4cb83d23404f97aabe306e6fd97, type: 3}
   LEFTPOWERUP: {fileID: 0}
   RIGHTPOWERUP: {fileID: 0}
   respawn: {fileID: 195910}
@@ -4180,6 +4181,11 @@ Prefab:
       propertyPath: verticalThrust
       value: 110
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: iconSuck
+      value: 
+      objectReference: {fileID: 21300000, guid: 1b24c4cb83d23404f97aabe306e6fd97,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 195910}
