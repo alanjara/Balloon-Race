@@ -66,6 +66,20 @@ namespace DigitalRuby.PyroParticles
             StartCoroutine(SendCollisionAfterDelay());
         }
 
+
+        public GameObject target;
+        private float speed = 20f;
+        public void setTarget(GameObject tar)
+        {
+            target = tar;
+        }
+        protected override void Update()
+        {
+            base.Update();
+            transform.LookAt(target.transform);
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
+
         public void HandleCollision(GameObject obj, Collision c)
         {
             if (collided)
