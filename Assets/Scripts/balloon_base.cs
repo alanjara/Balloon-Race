@@ -62,7 +62,7 @@ public class balloon_base : MonoBehaviour {
     public GameObject LEFTPOWERUP, RIGHTPOWERUP;
 
     public void AlignUIPowerup() {
-        if(my_number == 2)
+        if(my_number == 1)
         {
             poweruptransform.position = LEFTPOWERUP.transform.position;
         } else
