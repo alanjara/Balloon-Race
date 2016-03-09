@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class balloon_base : MonoBehaviour {
+    public aimingControl aim_control;
     public GameObject UICANVAS;
     //powerup gameobjects
     public GameObject firebolt;
@@ -34,7 +35,7 @@ public class balloon_base : MonoBehaviour {
     bool deadBaloon = false;
     ParticleSystem flameup;
     ParticleSystem speedboost;
-    protected PowerUp powerup;
+    public PowerUp powerup;
     protected int _fuel, _life, _speed;
     public GameObject bleed;
     public LayerMask balloon_layer;
@@ -210,7 +211,7 @@ public class balloon_base : MonoBehaviour {
         verT = verticalThrust;
         speedboost.enableEmission = false;
         size = transform.localScale;
-        powerup = PowerUp.wind_blast;
+        powerup = PowerUp.fire_ball;
 
         StartCoroutine(makepoofs());
 
@@ -366,6 +367,10 @@ public class balloon_base : MonoBehaviour {
     //manage power_ups
     public void pickupPowerup(PowerUp powerup) {
         this.powerup = powerup;
+        if (powerup == PowerUp.fire_ball)
+        {
+            aim_control.setIfAim(true);
+        }
     }
 
     private void shockWave() {
@@ -396,7 +401,9 @@ public class balloon_base : MonoBehaviour {
         switch (powerup) {
             case PowerUp.fire_ball:
                 //shoot a series of fireballs
-                Instantiate(firebolt, spawn.transform.position, spawn.transform.rotation);
+                GameObject fire_bolt = Instantiate(firebolt, spawn.transform.position, spawn.transform.rotation) as GameObject;
+                fire_bolt.GetComponent<DigitalRuby.PyroParticles.FireProjectileScript>().setTarget(aim_control.target);
+                aim_control.setIfAim(false);
                 break;
             case PowerUp.Wind_suck:
                 // a force pulling everything together
