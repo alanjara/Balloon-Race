@@ -16,6 +16,7 @@ public class LevelSelectUI : MonoBehaviour {
         Level1.onClick.AddListener(() => loadLevel1());
         Level2.onClick.AddListener(() => loadLevel2());
         Level3.onClick.AddListener(() => loadLevel3());
+        PersistentGameData.raceTimer = 0;
     }
 
     // Update is called once per frame
