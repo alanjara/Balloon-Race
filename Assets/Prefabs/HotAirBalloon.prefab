@@ -174,9 +174,22 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
+<<<<<<< HEAD
   - 4: {fileID: 405088}
   - 198: {fileID: 19809096}
   - 199: {fileID: 19956972}
+=======
+  - 4: {fileID: 457410}
+  - 33: {fileID: 3310698}
+  - 23: {fileID: 2317082}
+  - 54: {fileID: 5478198}
+  - 136: {fileID: 13693106}
+  - 75: {fileID: 7506478}
+  - 114: {fileID: 11465550}
+  - 114: {fileID: 11459002}
+  - 114: {fileID: 11416010}
+  - 114: {fileID: 11438328}
+>>>>>>> origin/master
   m_Layer: 9
   m_Name: Flame
   m_TagString: Untagged
@@ -345,6 +358,7 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419186}
@@ -357,6 +371,20 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &128062
 GameObject:
+=======
+  m_GameObject: {fileID: 195910}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 67.6, y: 45.49, z: 125.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 457410}
+  - {fileID: 499332}
+  - {fileID: 476294}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &411298
+Transform:
+>>>>>>> origin/master
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -2697,6 +2725,7 @@ ConstantForce:
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!95 &9510560
 Animator:
   serializedVersion: 3
@@ -2864,14 +2893,35 @@ Light:
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
 --- !u!114 &11428656
+=======
+--- !u!114 &11416010
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11438328
+>>>>>>> origin/master
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 167320}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8a331b0cf6ca2641a73624784c092b8, type: 3}
+=======
+  m_GameObject: {fileID: 159870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+>>>>>>> origin/master
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11459002
@@ -2926,8 +2976,8 @@ MonoBehaviour:
     m_Bits: 0
   minilightning: {fileID: 173134, guid: 72497d424f2e9a04d85223eea3e72c06, type: 2}
   dangerIcon: {fileID: 121970, guid: 8fa50037600b32c41b7248728db2f167, type: 2}
-  race_forward: {x: 0, y: 0, z: 1}
-  race_right: {x: 1, y: 0, z: 0}
+  race_forward: {x: 1, y: 0, z: 0}
+  race_right: {x: 0, y: 0, z: -1}
   powerupUI: {fileID: 106932, guid: 915f5ddaf6be0f14d820250276675584, type: 2}
   race_up: {x: 0, y: 1, z: 0}
   iconFire: {fileID: 21300000, guid: 14f034bcc145a37408d747166c8d7972, type: 3}
@@ -6376,6 +6426,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 1b24c4cb83d23404f97aabe306e6fd97,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5121a0ea578f65c4abb4bde73fc064c3, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 195910}
