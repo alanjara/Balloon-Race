@@ -10,6 +10,8 @@ public class OnePlyrBloonSel : MonoBehaviour {
 	public Button BalloonLeftButton;
 	public Button BasketRightButton;
 	public Button BasketLeftButton;
+	public Button DiffLeftButton;
+	public Button DiffRightButton;
 
 	public GameObject balloon;
 	public GameObject basket;
@@ -19,6 +21,10 @@ public class OnePlyrBloonSel : MonoBehaviour {
 
 	public List<Mesh> meshlist;
 	public int meshCount;
+
+	public List<string> diffList;
+	public int diffCount;
+	public Text Difficulty;
 	// Use this for initialization
 	void Start () {
 		PersistentGameData.numPlayers = 1;
@@ -30,6 +36,8 @@ public class OnePlyrBloonSel : MonoBehaviour {
 		BalloonLeftButton.onClick.AddListener (() => decrementColor ());
 		BasketRightButton.onClick.AddListener (() => incrementBalloon ());
 		BasketLeftButton.onClick.AddListener (() => decrementBalloon ());
+		DiffRightButton.onClick.AddListener (() => incrementDifficulty ());
+		DiffLeftButton.onClick.AddListener (() => decrementDifficulty ());
 
 		colorCount = 0;
 		colorlist = new List<Color>(){
@@ -41,6 +49,15 @@ public class OnePlyrBloonSel : MonoBehaviour {
 			Color.cyan,
 			Color.black,
 		};
+			
+		diffCount = 0;
+		diffList = new List<string>(){
+			"Easy",
+			"Medium",
+			"Hard",
+			"Absolutely\nBananas"
+		};
+		Difficulty.GetComponent<Text>().text = diffList[diffCount];
 
 		meshCount = 0;
 	}
@@ -79,5 +96,19 @@ public class OnePlyrBloonSel : MonoBehaviour {
 			meshCount = meshlist.Count - 1;
 		balloon.GetComponent<MeshFilter> ().mesh = meshlist [meshCount];
 		PersistentGameData.player1balloonModel = meshCount;
+	}
+
+	void incrementDifficulty(){
+		diffCount++;
+		if (diffCount >= diffList.Count)
+			diffCount = 0;
+		Difficulty.GetComponent<Text>().text = diffList[diffCount];
+	}
+
+	void decrementDifficulty(){
+		diffCount--;
+		if (diffCount < 0)
+			diffCount = diffList.Count - 1;
+		Difficulty.GetComponent<Text>().text = diffList[diffCount];
 	}
 }
