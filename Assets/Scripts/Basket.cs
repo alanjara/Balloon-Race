@@ -32,7 +32,8 @@ public class Basket : MonoBehaviour {
             index++;
 
         }
-
+        if (transform.parent.name == "AI")
+            return;
         if (balloon.GetComponent<balloon_base>().my_number == 1) {
             balloon.GetComponent<Renderer>().material.color = PersistentGameData.player1balloonColor;
             if (PersistentGameData.meshnum1 != 0) {
@@ -54,7 +55,7 @@ public class Basket : MonoBehaviour {
                 foreach (Transform x in balloon_anchors) {
                     x.position += Vector3.up *ropemod;
                 }
-                transform.parent.transform.Find("balloon").transform.Find("RallyingBaboon (1)").transform.position += Vector3.up * top_offset;
+                transform.parent.transform.Find("balloon").transform.Find("RallyingBaboon").transform.position += Vector3.up * top_offset;
             }
         } else if (balloon.GetComponent<balloon_base>().my_number == 2) {
             balloon.GetComponent<Renderer>().material.color = PersistentGameData.player2balloonColor;
@@ -77,7 +78,7 @@ public class Basket : MonoBehaviour {
                 foreach (Transform x in balloon_anchors) {
                     x.position += Vector3.up * ropemod;
                 }
-                transform.parent.transform.Find("balloon").transform.Find("RallyingBaboon (1)").transform.position += Vector3.up * top_offset;
+                transform.parent.transform.Find("balloon").transform.Find("RallyingBaboon").transform.position += Vector3.up * top_offset;
             }
         } else if (balloon.GetComponent<balloon_base>().my_number == 3)
         {

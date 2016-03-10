@@ -27,7 +27,7 @@ public class TwoPlyrBloonSel : MonoBehaviour {
 	public int meshCount;
 	// Use this for initialization
 	void Start () {
-		PersistentGameData.numPlayers = 1;
+		PersistentGameData.numPlayers = 2;
 
 		balloon1 = GameObject.Find ("HotAirBalloon1/balloon");
 		basket1 = GameObject.Find ("HotAirBalloon1/basket");

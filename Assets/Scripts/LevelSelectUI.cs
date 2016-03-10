@@ -34,7 +34,7 @@ public class LevelSelectUI : MonoBehaviour {
 
     }
     void LL1() {
-        SceneManager.LoadScene("Scene_Stali");
+        SceneManager.LoadScene("GlacierGorge");
     }
     void loadLevel2() {
         Destroy(Invisible_walls);

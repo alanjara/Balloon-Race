@@ -14,8 +14,8 @@ public class Finish : MonoBehaviour
     IEnumerator levelended()
     {
         levelendtext.SetActive(true);
-        yield return new WaitForSeconds(1.4f);
-        Application.LoadLevel(Application.loadedLevel);
+        yield return new WaitForSeconds(3f);
+        Application.LoadLevel("_MainMenu");
 
     }
 
