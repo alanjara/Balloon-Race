@@ -15,7 +15,7 @@ public class Finish : MonoBehaviour
     {
         levelendtext.SetActive(true);
         yield return new WaitForSeconds(3f);
-        Application.LoadLevel("_MainMenu");
+        Application.LoadLevel("WinScene");
 
     }
 
@@ -29,7 +29,7 @@ public class Finish : MonoBehaviour
         {
             over = true;
             // winrar!
-
+            PersistentGameData.raceWinner = collision.gameObject.GetComponent<balloon_base>().my_number;
             StartCoroutine(levelended());
 
         }
