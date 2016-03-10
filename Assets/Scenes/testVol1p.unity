@@ -392,7 +392,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 154884, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_Name
-      value: Ring17
+      value: Ring14
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalScale.z
@@ -668,7 +668,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 154884, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_Name
-      value: Ring15
+      value: Ring
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalScale.z
@@ -938,7 +938,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 154884, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_Name
-      value: Ring20
+      value: Ring15
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalScale.z
@@ -1439,7 +1439,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 154884, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_Name
-      value: Ring22
+      value: Ring
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalScale.z
@@ -2288,7 +2288,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 154884, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_Name
-      value: Ring21
+      value: Ring16
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalScale.z
@@ -3307,7 +3307,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 154884, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_Name
-      value: Ring14
+      value: Ring
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalScale.z
@@ -3715,7 +3715,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 154884, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_Name
-      value: Ring16
+      value: Ring
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalScale.z
@@ -5105,7 +5105,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 154884, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_Name
-      value: Ring26
+      value: Ring20
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalScale.z
@@ -5326,7 +5326,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 154884, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_Name
-      value: Ring25
+      value: Ring19
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalScale.z
@@ -5388,7 +5388,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 154884, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_Name
-      value: Ring19
+      value: Ring
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalScale.z
@@ -5706,7 +5706,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 154884, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_Name
-      value: Ring23
+      value: Ring17
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalScale.z
@@ -6941,7 +6941,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 154884, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_Name
-      value: Ring18
+      value: Ring
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalScale.z
@@ -7407,7 +7407,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 154884, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_Name
-      value: Ring24
+      value: Ring18
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalScale.z
@@ -7842,6 +7842,14 @@ Prefab:
     - target: {fileID: 130756, guid: 1ae9cbb3eb020824882027e193b29d76, type: 2}
       propertyPath: m_Name
       value: AI
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476706, guid: 1ae9cbb3eb020824882027e193b29d76, type: 2}
+      propertyPath: horizontalThrust
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476706, guid: 1ae9cbb3eb020824882027e193b29d76, type: 2}
+      propertyPath: horizontalThrustBoosted
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ae9cbb3eb020824882027e193b29d76, type: 2}

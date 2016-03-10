@@ -20466,8 +20466,8 @@ MonoBehaviour:
   wind_wave: {fileID: 119664, guid: 7dfdcd251aee5134c9d486599626b867, type: 2}
   my_number: 3
   verticalThrust: 110
-  horizontalThrust: 80
-  horizontalThrustBoosted: 120
+  horizontalThrust: 40
+  horizontalThrustBoosted: 90
   risingForce: 10
   fire_float: 0
   v: 0
@@ -29856,7 +29856,7 @@ MeshCollider:
   m_GameObject: {fileID: 785261286}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: 46a4d5569122cac41b3ee4a5df98925c, type: 3}

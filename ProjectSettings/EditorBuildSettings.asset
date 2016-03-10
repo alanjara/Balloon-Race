@@ -25,3 +25,9 @@ EditorBuildSettings:
     path: Assets/Scenes/City.unity
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
+  - enabled: 1
+    path: Assets/Scenes/GlacierGorge1p.unity
+  - enabled: 1
+    path: Assets/Scenes/testVol1p.unity
+  - enabled: 1
+    path: Assets/Scenes/CityComplete1P.unity
