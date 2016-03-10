@@ -437,8 +437,8 @@ public class balloon_base : MonoBehaviour {
                     GameObject fire_bolt = Instantiate(firebolt, transform.position+race_forward*2, spawn.transform.rotation) as GameObject;
                     fire_bolt.GetComponent<DigitalRuby.PyroParticles.FireProjectileScript>().setTarget(aim_control.target);
                     aim_control.ifAim = false;
+                    powerup = PowerUp.none;
 
-                    
                 }
                 break;
             case PowerUp.Wind_suck:
@@ -472,7 +472,7 @@ public class balloon_base : MonoBehaviour {
                 //dont own a powerup
                 break;
         }
-        powerup = PowerUp.none;
+        
         setCorrectPowerupImage();
     }
 }
