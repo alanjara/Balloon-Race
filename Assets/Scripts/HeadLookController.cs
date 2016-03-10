@@ -38,6 +38,7 @@ public class HeadLookController : MonoBehaviour {
 	public Vector3 target;
 	public float effect = 1;
 	public bool overrideAnimation = false;
+    public bool BigMonkey = false;
 
 	void Start () {
 		if (rootNode == null) {
@@ -83,7 +84,10 @@ public class HeadLookController : MonoBehaviour {
 			target = target2.transform.position;
 		if (rootNode.position.x < -.5)
 			target = target1.transform.position;
-
+        if (BigMonkey)
+        {
+            target = target1.transform.position;
+        }
 		// Remember initial directions of joints that should not be affected
 		Vector3[] jointDirections = new Vector3[nonAffectedJoints.Length];
 		for (int i=0; i<nonAffectedJoints.Length; i++) {
