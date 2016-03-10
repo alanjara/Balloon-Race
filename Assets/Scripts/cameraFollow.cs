@@ -30,6 +30,7 @@ public class cameraFollow : MonoBehaviour {
         targetPos.z = target.transform.position.z - FollowDistance;
         Camera.main.transform.position = targetPos;
         start_time = Time.time;
+      
     }
     void FixedUpdate() {
         start_time = Time.time;
