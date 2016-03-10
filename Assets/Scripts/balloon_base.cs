@@ -60,6 +60,7 @@ public class balloon_base : MonoBehaviour {
     Image powerupimage;
     public Sprite iconFire, iconWind, iconSpeed, iconSuck;
     controls my_inputs;
+    
 
     public GameObject LEFTPOWERUP, RIGHTPOWERUP;
     
@@ -213,6 +214,8 @@ public class balloon_base : MonoBehaviour {
         my_inputs.vert = string.Format("Vertical{0}", my_number);
         my_inputs.hor = string.Format("Horizontal{0}", my_number);
         my_inputs.fire = string.Format("Fire{0}", my_number);
+        print(my_inputs.up);
+        print(my_number);
         flameup = gameObject.transform.Find("Flame").gameObject.GetComponent<ParticleSystem>();
         speedboost = gameObject.transform.Find("Speed").gameObject.GetComponent<ParticleSystem>();
         spawn = gameObject.transform.Find("spawn").gameObject;
