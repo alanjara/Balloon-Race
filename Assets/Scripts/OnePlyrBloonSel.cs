@@ -58,6 +58,7 @@ public class OnePlyrBloonSel : MonoBehaviour {
 			"Absolutely\nBananas"
 		};
 		Difficulty.GetComponent<Text>().text = diffList[diffCount];
+		PersistentGameData.AIdifficulty = diffCount;
 
 		meshCount = 0;
 	}
@@ -103,6 +104,7 @@ public class OnePlyrBloonSel : MonoBehaviour {
 		if (diffCount >= diffList.Count)
 			diffCount = 0;
 		Difficulty.GetComponent<Text>().text = diffList[diffCount];
+		PersistentGameData.AIdifficulty = diffCount;
 	}
 
 	void decrementDifficulty(){
@@ -110,5 +112,6 @@ public class OnePlyrBloonSel : MonoBehaviour {
 		if (diffCount < 0)
 			diffCount = diffList.Count - 1;
 		Difficulty.GetComponent<Text>().text = diffList[diffCount];
+		PersistentGameData.AIdifficulty = diffCount;
 	}
 }
