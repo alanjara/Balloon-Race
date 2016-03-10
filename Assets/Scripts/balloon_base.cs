@@ -67,7 +67,7 @@ public class balloon_base : MonoBehaviour {
         if(my_number == 1)
         {
             poweruptransform.position = LEFTPOWERUP.transform.position;
-        } else
+        } else if(RIGHTPOWERUP!=null)
         {
             poweruptransform.position = RIGHTPOWERUP.transform.position;
         }
