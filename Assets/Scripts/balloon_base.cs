@@ -454,12 +454,14 @@ public class balloon_base : MonoBehaviour {
                 PLAYCLIP("blow", 1f);
                 Instantiate(absorb_wave, transform.position, Quaternion.identity);
 
+                aim_control.ifAim = false;
                 powerup = PowerUp.none;
                 break;
             case PowerUp.rocket_boost:
                 ////speed up for a while
                 boost();
 
+                aim_control.ifAim = false;
                 powerup = PowerUp.none;
                 break;
             case PowerUp.wind_blast:
@@ -471,9 +473,11 @@ public class balloon_base : MonoBehaviour {
                 PLAYCLIP("blow", 1f);
                 Instantiate(wind_wave, transform.position, Quaternion.identity);
 
+                aim_control.ifAim = false;
                 powerup = PowerUp.none;
                 break;
             default:
+                aim_control.ifAim = false;
                 //dont own a powerup
                 break;
         }

@@ -29,7 +29,7 @@ public class Finish : MonoBehaviour
         {
             over = true;
             // winrar!
-            PersistentGameData.raceWinner = collision.gameObject.GetComponent<balloon_base>().my_number;
+            PersistentGameData.raceWinner = collision.gameObject.transform.parent.Find("balloon").GetComponent<balloon_base>().my_number;
             StartCoroutine(levelended());
 
         }
