@@ -7,6 +7,8 @@ public class Basket : MonoBehaviour {
     public Transform[] anchors;
     public Transform[] balloon_anchors;
     public LineRenderer[] ropes;
+    float ropemod = 0.5f;
+    float top_offset = 0;
     void Start() {
         int index = 0;
         ropes = new LineRenderer[4];
@@ -29,6 +31,59 @@ public class Basket : MonoBehaviour {
             joint.maxDistance = .5f;
             index++;
 
+        }
+
+        if (balloon.GetComponent<balloon_base>().my_number == 1) {
+            balloon.GetComponent<Renderer>().material.color = PersistentGameData.player1balloonColor;
+            if (PersistentGameData.meshnum1 != 0) {
+                balloon.GetComponent<MeshFilter>().mesh = PersistentGameData.player1balloonModel;
+                if (PersistentGameData.meshnum1 == 1) {
+                   top_offset =  -(0.9f-.116f);
+                }
+                if (PersistentGameData.meshnum1 == 2) {
+                    top_offset = - (0.9f - 1.22f);
+                }
+                if (PersistentGameData.meshnum1 == 3) {
+                    top_offset = -(0.9f + .62f);
+
+                }
+                if (PersistentGameData.meshnum1 == 4) {
+                    ropemod = 1f;
+                    top_offset =  -(.9f - .771f);
+                }
+                foreach (Transform x in balloon_anchors) {
+                    x.position += Vector3.up *ropemod;
+                }
+                transform.parent.transform.Find("balloon").transform.Find("RallyingBaboon (1)").transform.position += Vector3.up * top_offset;
+            }
+        } else if (balloon.GetComponent<balloon_base>().my_number == 2) {
+            balloon.GetComponent<Renderer>().material.color = PersistentGameData.player2balloonColor;
+            if (PersistentGameData.meshnum2 !=0) {
+                balloon.GetComponent<MeshFilter>().mesh = PersistentGameData.player2balloonModel;
+                if (PersistentGameData.meshnum2 == 1) {
+                    top_offset = -(0.9f - .116f);
+                }
+                if (PersistentGameData.meshnum2 == 2) {
+                    top_offset = -(0.9f - 1.22f);
+                }
+                if (PersistentGameData.meshnum2 == 3) {
+                    top_offset = -(0.9f + .62f);
+
+                }
+                if (PersistentGameData.meshnum2 == 4) {
+                    ropemod = 1f;
+                    top_offset = -(.9f - .771f);
+                }
+                foreach (Transform x in balloon_anchors) {
+                    x.position += Vector3.up * ropemod;
+                }
+                transform.parent.transform.Find("balloon").transform.Find("RallyingBaboon (1)").transform.position += Vector3.up * top_offset;
+            }
+        } else if (balloon.GetComponent<balloon_base>().my_number == 3)
+        {
+            foreach (Transform x in balloon_anchors) {
+                    x.position += Vector3.up;
+                }
         }
     }
     // Use this for initialization
