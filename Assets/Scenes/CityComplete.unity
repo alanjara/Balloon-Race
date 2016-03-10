@@ -13605,7 +13605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c0263f0b03b234bb3243b4bd40558a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SPEED: 0.2
+  SPEED: 0.02
   RotInXZ: 1
   RotInXY: 0
   RotInZY: 0
@@ -19944,7 +19944,7 @@ MonoBehaviour:
   v: 0
   h: 0
   expansion: 0
-  max_height_modifier: 300
+  max_height_modifier: 3000
   LastCheckpoint: {x: -5, y: 5, z: -22}
   up: 0
   bleed: {fileID: 113984, guid: 3046341e43796774ca8b6f684b4baa66, type: 2}
@@ -48974,7 +48974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c0263f0b03b234bb3243b4bd40558a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SPEED: 0.05
+  SPEED: 0.004
   RotInXZ: 1
   RotInXY: 0
   RotInZY: 0
@@ -49652,7 +49652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c0263f0b03b234bb3243b4bd40558a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SPEED: 0.2
+  SPEED: 0.02
   RotInXZ: 1
   RotInXY: 0
   RotInZY: 0
@@ -56713,11 +56713,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -70.03774
+      value: -68.59
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 954.5335
+      value: 950.06
       objectReference: {fileID: 0}
     - target: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
       propertyPath: m_LocalRotation.x

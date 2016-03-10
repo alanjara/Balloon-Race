@@ -13,7 +13,7 @@ public class balloon_base : MonoBehaviour {
     public GameObject wind_wave;
     public int my_number;
     //wind blast consts
-    private const float wind_power = 0.5f;
+    private const float wind_power = 1.5f;
     private const float wind_radius = 200f;
     GameObject spawn;
     public float verticalThrust = 60;
@@ -48,6 +48,7 @@ public class balloon_base : MonoBehaviour {
     public Vector3 race_up = new Vector3(0, 1, 0);
     Transform poweruptransform;
     BalloonBaboon bb;
+    GameObject basket;
     public void setControlDirection(Transform setter) {
         race_forward = setter.forward;
         race_right = setter.right;
@@ -61,7 +62,7 @@ public class balloon_base : MonoBehaviour {
     controls my_inputs;
 
     public GameObject LEFTPOWERUP, RIGHTPOWERUP;
-
+    
     public void AlignUIPowerup() {
         if(my_number == 1)
         {
@@ -216,7 +217,7 @@ public class balloon_base : MonoBehaviour {
         speedboost = gameObject.transform.Find("Speed").gameObject.GetComponent<ParticleSystem>();
         spawn = gameObject.transform.Find("spawn").gameObject;
         balloon_layer = LayerMask.GetMask("Balloon");
-
+        basket = transform.parent.Find("basket").gameObject;
         life = 1;
         floatForce = risingForce;
         rb = GetComponent<Rigidbody>();

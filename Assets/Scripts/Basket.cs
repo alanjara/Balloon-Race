@@ -32,7 +32,7 @@ public class Basket : MonoBehaviour {
             index++;
 
         }
-        if (transform.parent.transform.parent.name == "AI")
+        if (transform.parent.name == "AI")
             return;
         if (balloon.GetComponent<balloon_base>().my_number == 1) {
             balloon.GetComponent<Renderer>().material.color = PersistentGameData.player1balloonColor;
