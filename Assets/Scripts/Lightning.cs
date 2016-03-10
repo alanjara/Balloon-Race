@@ -22,7 +22,6 @@ public class Lightning : MonoBehaviour {
         while (true)
         {
             lightaa.SetActive(true);
-
             col.enabled = false;
             lite.enabled = true;
 
