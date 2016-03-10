@@ -96,6 +96,7 @@ GameObject:
   - 224: {fileID: 18167234}
   - 222: {fileID: 18167236}
   - 114: {fileID: 18167235}
+  - 114: {fileID: 18167237}
   m_Layer: 5
   m_Name: BalloonRight
   m_TagString: Untagged
@@ -159,6 +160,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 18167233}
+--- !u!114 &18167237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 18167233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &23173232
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +185,7 @@ GameObject:
   - 222: {fileID: 23173235}
   - 114: {fileID: 23173234}
   m_Layer: 5
-  m_Name: BalloonLeft
+  m_Name: BalloonLeft1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -358,6 +373,7 @@ GameObject:
   - 224: {fileID: 104595663}
   - 222: {fileID: 104595665}
   - 114: {fileID: 104595664}
+  - 114: {fileID: 104595666}
   m_Layer: 5
   m_Name: BasketLeft
   m_TagString: Untagged
@@ -421,6 +437,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 104595662}
+--- !u!114 &104595666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 104595662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &183508354
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +659,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 195910, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
       propertyPath: m_Name
-      value: HotAirBalloon (1)
+      value: HotAirBalloon2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11459002, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
@@ -650,7 +680,7 @@ GameObject:
   - 222: {fileID: 234820487}
   - 114: {fileID: 234820486}
   m_Layer: 5
-  m_Name: BasketLeft
+  m_Name: BasketLeft1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -826,7 +856,7 @@ GameObject:
   - 222: {fileID: 304844469}
   - 114: {fileID: 304844468}
   m_Layer: 5
-  m_Name: BasketRight
+  m_Name: BasketRight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,7 +1122,7 @@ GameObject:
   - 222: {fileID: 395157459}
   - 114: {fileID: 395157458}
   m_Layer: 5
-  m_Name: BalloonLeft (1)
+  m_Name: BalloonLeft2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1419,6 +1449,7 @@ GameObject:
   - 224: {fileID: 633409228}
   - 222: {fileID: 633409230}
   - 114: {fileID: 633409229}
+  - 114: {fileID: 633409231}
   m_Layer: 5
   m_Name: BalloonLeft
   m_TagString: Untagged
@@ -1482,6 +1513,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 633409227}
+--- !u!114 &633409231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 633409227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &704877247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,6 +1695,7 @@ GameObject:
   - 224: {fileID: 760650907}
   - 222: {fileID: 760650909}
   - 114: {fileID: 760650908}
+  - 114: {fileID: 760650910}
   m_Layer: 5
   m_Name: BasketRight
   m_TagString: Untagged
@@ -1713,6 +1759,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 760650906}
+--- !u!114 &760650910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 760650906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &852479936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,7 +1908,7 @@ GameObject:
   - 222: {fileID: 924892123}
   - 114: {fileID: 924892122}
   m_Layer: 5
-  m_Name: BasketRight (1)
+  m_Name: BasketRight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2054,6 +2114,7 @@ GameObject:
   - 224: {fileID: 1004475259}
   - 222: {fileID: 1004475261}
   - 114: {fileID: 1004475260}
+  - 114: {fileID: 1004475262}
   m_Layer: 5
   m_Name: BasketLeft
   m_TagString: Untagged
@@ -2117,6 +2178,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1004475258}
+--- !u!114 &1004475262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1004475258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1022031744
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,7 +2203,7 @@ GameObject:
   - 222: {fileID: 1022031747}
   - 114: {fileID: 1022031746}
   m_Layer: 5
-  m_Name: BasketLeft (1)
+  m_Name: BasketLeft2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2392,7 +2467,7 @@ GameObject:
   - 223: {fileID: 1129243850}
   - 114: {fileID: 1129243849}
   - 114: {fileID: 1129243848}
-  - 114: {fileID: 1129243852}
+  - 114: {fileID: 1129243853}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2481,7 +2556,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1129243852
+--- !u!114 &1129243853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -2489,16 +2564,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1129243847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cecd24b7fdab9f44790b8637720e5c3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fc854330f712ef4cb5d60c30b2da074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GoButton: {fileID: 1238778871}
-  BalloonRightButton: {fileID: 1325753681}
-  BalloonLeftButton: {fileID: 23173234}
-  BasketRightButton: {fileID: 304844468}
-  BasketLeftButton: {fileID: 234820486}
-  balloon: {fileID: 0}
-  basket: {fileID: 0}
+  BalloonRightButton1: {fileID: 1325753681}
+  BalloonLeftButton1: {fileID: 23173234}
+  BasketRightButton1: {fileID: 304844468}
+  BasketLeftButton1: {fileID: 234820486}
+  BalloonRightButton2: {fileID: 1169707346}
+  BalloonLeftButton2: {fileID: 395157458}
+  BasketRightButton2: {fileID: 924892122}
+  BasketLeftButton2: {fileID: 1022031746}
+  balloon1: {fileID: 0}
+  basket1: {fileID: 0}
+  balloon2: {fileID: 0}
+  basket2: {fileID: 0}
   colorlist: []
   colorCount: 0
   meshlist:
@@ -2519,7 +2600,7 @@ GameObject:
   - 222: {fileID: 1169707347}
   - 114: {fileID: 1169707346}
   m_Layer: 5
-  m_Name: BalloonRight (1)
+  m_Name: BalloonRight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2871,7 +2952,7 @@ GameObject:
   - 222: {fileID: 1325753682}
   - 114: {fileID: 1325753681}
   m_Layer: 5
-  m_Name: BalloonRight
+  m_Name: BalloonRight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3019,6 +3100,7 @@ GameObject:
   - 224: {fileID: 1396341189}
   - 222: {fileID: 1396341191}
   - 114: {fileID: 1396341190}
+  - 114: {fileID: 1396341192}
   m_Layer: 5
   m_Name: BasketRight
   m_TagString: Untagged
@@ -3082,6 +3164,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1396341188}
+--- !u!114 &1396341192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1396341188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1412603601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3971,6 +4067,7 @@ GameObject:
   - 224: {fileID: 1893701004}
   - 222: {fileID: 1893701006}
   - 114: {fileID: 1893701005}
+  - 114: {fileID: 1893701007}
   m_Layer: 5
   m_Name: BalloonRight
   m_TagString: Untagged
@@ -4034,6 +4131,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1893701003}
+--- !u!114 &1893701007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1893701003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1954006601
 GameObject:
   m_ObjectHideFlags: 0
@@ -4044,6 +4155,7 @@ GameObject:
   - 224: {fileID: 1954006602}
   - 222: {fileID: 1954006604}
   - 114: {fileID: 1954006603}
+  - 114: {fileID: 1954006605}
   m_Layer: 5
   m_Name: BalloonLeft
   m_TagString: Untagged
@@ -4107,6 +4219,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1954006601}
+--- !u!114 &1954006605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1954006601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1964899878
 GameObject:
   m_ObjectHideFlags: 0
@@ -4443,6 +4569,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 3.66
       objectReference: {fileID: 0}
+    - target: {fileID: 195910, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: m_Name
+      value: HotAirBalloon1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11459002, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
@@ -4484,6 +4614,7 @@ GameObject:
   - 224: {fileID: 2016456294}
   - 222: {fileID: 2016456296}
   - 114: {fileID: 2016456295}
+  - 114: {fileID: 2016456297}
   m_Layer: 5
   m_Name: Go
   m_TagString: Untagged
@@ -4547,6 +4678,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2016456293}
+--- !u!114 &2016456297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2016456293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2020431153
 GameObject:
   m_ObjectHideFlags: 0

@@ -97,6 +97,7 @@ GameObject:
   - 222: {fileID: 38181519}
   - 114: {fileID: 38181518}
   - 95: {fileID: 38181520}
+  - 114: {fileID: 38181521}
   m_Layer: 5
   m_Name: Baboons
   m_TagString: Untagged
@@ -177,6 +178,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &38181521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 38181516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &64953225
 Prefab:
   m_ObjectHideFlags: 0
@@ -420,6 +435,7 @@ GameObject:
   - 222: {fileID: 218177864}
   - 114: {fileID: 218177863}
   - 95: {fileID: 218177865}
+  - 114: {fileID: 218177866}
   m_Layer: 5
   m_Name: HotAir
   m_TagString: Untagged
@@ -500,6 +516,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &218177866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 218177861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &478154829
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,6 +1002,7 @@ GameObject:
   - 224: {fileID: 1389263822}
   - 222: {fileID: 1389263824}
   - 114: {fileID: 1389263823}
+  - 114: {fileID: 1389263825}
   m_Layer: 5
   m_Name: 1Player
   m_TagString: Untagged
@@ -1035,6 +1066,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1389263821}
+--- !u!114 &1389263825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1389263821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!4 &1402970253 stripped
 Transform:
   m_PrefabParentObject: {fileID: 499332, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
@@ -1380,6 +1425,7 @@ GameObject:
   - 224: {fileID: 2016456294}
   - 222: {fileID: 2016456296}
   - 114: {fileID: 2016456295}
+  - 114: {fileID: 2016456297}
   m_Layer: 5
   m_Name: 2Players
   m_TagString: Untagged
@@ -1443,3 +1489,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2016456293}
+--- !u!114 &2016456297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2016456293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1

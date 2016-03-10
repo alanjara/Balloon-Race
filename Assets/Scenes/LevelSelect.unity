@@ -888,7 +888,7 @@ GameObject:
   - 222: {fileID: 1297447150}
   - 114: {fileID: 1297447149}
   m_Layer: 5
-  m_Name: Thunder Canyon
+  m_Name: Glacier Gorge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -944,9 +944,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Thunder
+  m_Text: 'Glacier
 
-    Canyon'
+    Gorge'
 --- !u!222 &1297447150
 CanvasRenderer:
   m_ObjectHideFlags: 0

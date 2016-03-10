@@ -8,6 +8,7 @@ public class Whirligig : MonoBehaviour {
     public bool RotInXZ = true;
     public bool RotInXY = false;
     public bool RotInZY = false;
+    public bool SLAMTOWN = false;
 	// Use this for initialization
 	void Start () {
         focus = transform.parent;
@@ -21,20 +22,29 @@ public class Whirligig : MonoBehaviour {
 
             float newx = focus.position.x + (transform.position.x - focus.position.x) * Mathf.Cos(SPEED) - (transform.position.z - focus.position.z) * Mathf.Sin(SPEED);
             float newz = focus.position.z + (transform.position.x - focus.position.x) * Mathf.Sin(SPEED) + (transform.position.z - focus.position.z) * Mathf.Cos(SPEED);
-
+            if (SLAMTOWN)
+            {
+                transform.rotation = Quaternion.LookRotation(transform.position - new Vector3(newx, transform.position.y, newz));
+            }
             transform.position = new Vector3(newx, transform.position.y, newz);
         } else if (RotInXY)
         {
             float newx = focus.position.x + (transform.position.x - focus.position.x) * Mathf.Cos(SPEED) - (transform.position.y - focus.position.y) * Mathf.Sin(SPEED);
             float newz = focus.position.y + (transform.position.x - focus.position.x) * Mathf.Sin(SPEED) + (transform.position.y - focus.position.y) * Mathf.Cos(SPEED);
-
+            if (SLAMTOWN)
+            {
+                transform.rotation = Quaternion.LookRotation(transform.position - new Vector3(newx, newz, transform.position.z));
+            }
             transform.position = new Vector3(newx, newz, transform.position.z);
         }
         else
         {
             float newx = focus.position.y + (transform.position.y - focus.position.y) * Mathf.Cos(SPEED) - (transform.position.z - focus.position.z) * Mathf.Sin(SPEED);
             float newz = focus.position.z + (transform.position.y - focus.position.y) * Mathf.Sin(SPEED) + (transform.position.z - focus.position.z) * Mathf.Cos(SPEED);
-
+            if (SLAMTOWN)
+            {
+                transform.rotation = Quaternion.LookRotation(transform.position - new Vector3(transform.position.x, newx, newz));
+            }
             transform.position = new Vector3(transform.position.x, newx, newz);
         }
     }
