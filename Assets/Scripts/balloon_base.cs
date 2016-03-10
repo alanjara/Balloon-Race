@@ -224,7 +224,7 @@ public class balloon_base : MonoBehaviour {
         powerup = PowerUp.rocket_boost;
 
         StartCoroutine(makepoofs());
-
+        forward_control = race_forward;
         setCorrectPowerupImage();
     }
 
