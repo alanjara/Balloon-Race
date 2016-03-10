@@ -524,7 +524,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194022}
   m_LocalRotation: {x: 0, y: -0.7071066, z: 0, w: -0.70710695}
-  m_LocalPosition: {x: -0.93, y: 0.041, z: -8.04}
+  m_LocalPosition: {x: 218.20517, y: 24.26931, z: 194.16504}
   m_LocalScale: {x: 0.041666675, y: 0.041666668, z: 0.041666675}
   m_Children:
   - {fileID: 409496}
@@ -989,7 +989,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 2
-  m_Range: 50
+  m_Range: 0
   m_SpotAngle: 15
   m_CookieSize: 10
   m_Shadows:
@@ -1022,7 +1022,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 2
-  m_Range: 50
+  m_Range: 0
   m_SpotAngle: 15
   m_CookieSize: 10
   m_Shadows:
@@ -1095,6 +1095,7 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   effect: 1
   overrideAnimation: 0
+  BigMonkey: 0
 --- !u!114 &11451542
 MonoBehaviour:
   m_ObjectHideFlags: 1
