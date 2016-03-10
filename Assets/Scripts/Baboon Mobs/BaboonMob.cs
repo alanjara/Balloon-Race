@@ -40,7 +40,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson {
         CapsuleCollider m_Capsule;
         bool m_Crouching;
         bool try_jump = false;
-
+        
 
         void Start() {
             m_Animator = GetComponent<Animator>();

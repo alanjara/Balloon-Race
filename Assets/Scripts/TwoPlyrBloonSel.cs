@@ -68,10 +68,10 @@ public class TwoPlyrBloonSel : MonoBehaviour {
 			colorCount = 0;
 		if (playernum == 1) {
 			balloon1.GetComponent<Renderer> ().material.color = colorlist [colorCount];
-			PersistentGameData.player1balloonColor = colorCount;
+			PersistentGameData.player1balloonColor = colorlist[colorCount];
 		} else {
 			balloon2.GetComponent<Renderer> ().material.color = colorlist [colorCount];
-			PersistentGameData.player2balloonColor = colorCount;
+            PersistentGameData.player2balloonColor = colorlist[colorCount];
 		}
 	}
 
@@ -81,10 +81,10 @@ public class TwoPlyrBloonSel : MonoBehaviour {
 			colorCount = colorlist.Count - 1;
 		if (playernum == 1) {
 			balloon1.GetComponent<Renderer> ().material.color = colorlist [colorCount];
-			PersistentGameData.player1balloonColor = colorCount;
+            PersistentGameData.player1balloonColor = colorlist[colorCount];
 		} else {
 			balloon2.GetComponent<Renderer> ().material.color = colorlist[colorCount];
-			PersistentGameData.player2balloonColor = colorCount;
+            PersistentGameData.player2balloonColor = colorlist[colorCount];
 		}
 	}
 
@@ -94,10 +94,12 @@ public class TwoPlyrBloonSel : MonoBehaviour {
 			meshCount = 0;
 		if (playernum == 1) {
 			balloon1.GetComponent<MeshFilter> ().mesh = meshlist [meshCount];
-			PersistentGameData.player1balloonModel = meshCount;
+            PersistentGameData.player1balloonModel = meshlist[meshCount];
+            PersistentGameData.meshnum1 = meshCount;
 		} else {
 			balloon2.GetComponent<MeshFilter> ().mesh = meshlist [meshCount];
-			PersistentGameData.player2balloonModel = meshCount;
+            PersistentGameData.player2balloonModel = meshlist[meshCount];
+            PersistentGameData.meshnum2 = meshCount;
 		}
 	}
 
@@ -107,10 +109,12 @@ public class TwoPlyrBloonSel : MonoBehaviour {
 			meshCount = meshlist.Count - 1;
 		if (playernum == 1) {
 			balloon1.GetComponent<MeshFilter> ().mesh = meshlist [meshCount];
-			PersistentGameData.player1balloonModel = meshCount;
+            PersistentGameData.player1balloonModel = meshlist[meshCount];
+            PersistentGameData.meshnum1 = meshCount;
 		} else {
 			balloon2.GetComponent<MeshFilter> ().mesh = meshlist [meshCount];
-			PersistentGameData.player2balloonModel = meshCount;
+            PersistentGameData.player2balloonModel = meshlist[meshCount];
+            PersistentGameData.meshnum2 = meshCount;
 		}
 	}
 }

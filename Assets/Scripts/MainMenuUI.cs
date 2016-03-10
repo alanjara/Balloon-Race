@@ -18,6 +18,6 @@ public class MainMenuUI : MonoBehaviour {
 	}
 
 	void loadTwoPlayer(){
-		SceneManager.LoadScene ("_1PlyrBloonSel");
+		SceneManager.LoadScene ("_2PlyrBloonSel");
 	}
 }

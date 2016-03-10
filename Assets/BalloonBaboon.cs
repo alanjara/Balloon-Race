@@ -5,7 +5,7 @@ public class BalloonBaboon : MonoBehaviour {
     Animator anm;
 	// Use this for initialization
 	void Start () {
-        GetComponent<Animator>();
+        anm = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -37,5 +37,10 @@ public class BalloonBaboon : MonoBehaviour {
     public void Boost()
     {
         anm.SetTrigger("Boost");
+    }
+
+    public void CrouchShort()
+    {
+        anm.SetTrigger("CrouchShort");
     }
 }

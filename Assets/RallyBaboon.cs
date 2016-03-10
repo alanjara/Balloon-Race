@@ -3,10 +3,13 @@ using System.Collections;
 
 public class RallyBaboon : MonoBehaviour {
     Animator anm;
+    //public bool top = false;
+    Quaternion startrot;
 	// Use this for initialization
 	void Start () {
         anm = GetComponent<Animator>();
         StartCoroutine(animate());
+        startrot = transform.rotation;
 	}
 
     IEnumerator animate()
@@ -22,6 +25,12 @@ public class RallyBaboon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	   
+       /*
+        if (top == true) {
+            transform.position = transform.parent.transform.position + Vector3.up;
+         //   transform.rotation = startrot;
+
+        }
+        */
 	}
 }

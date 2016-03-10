@@ -11,9 +11,11 @@ EditorBuildSettings:
     path: Assets/Scenes/_1PlyrBloonSel.unity
   - enabled: 1
     path: Assets/Scenes/LevelSelect.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SceneStali.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/testVol.unity
   - enabled: 1
     path: Assets/Scenes/CityComplete.unity
+  - enabled: 1
+    path: Assets/Scenes/_2PlyrBloonSel.unity
