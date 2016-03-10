@@ -231,6 +231,8 @@ public class balloon_base : MonoBehaviour {
         StartCoroutine(makepoofs());
         forward_control = race_forward;
         setCorrectPowerupImage();
+
+        aim_control.ifAim = false;
     }
 
 
