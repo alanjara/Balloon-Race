@@ -136,6 +136,7 @@ public class balloon_base : MonoBehaviour {
     }
 
     IEnumerator dieAnimation() {
+        PLAYCLIP("die", 1f);
         GameObject g = Instantiate(dangerIcon) as GameObject;
         g.transform.SetParent(UICANVAS.transform);
         Vector3 where = Camera.allCameras[my_number - 1].WorldToScreenPoint(transform.position);
@@ -320,10 +321,25 @@ public class balloon_base : MonoBehaviour {
         horT = horizontalThrust;
         speedboost.enableEmission = false;
     }
+
+    public static void PLAYCLIP(string clip, float vol)
+    {
+        GameObject go = new GameObject("Bubby");
+        go.transform.position = Camera.main.transform.position;
+        go.AddComponent<AudioSource>();
+        AudioSource asrc = go.GetComponent<AudioSource>();
+        asrc.spatialBlend = 0.1f;
+        asrc.clip = Resources.Load(clip) as AudioClip;
+        asrc.volume = 1f;
+        asrc.Play();
+        Destroy(go, asrc.clip.length);
+    }
+
     public void boost() {
         if (boostingcr != null) {
             StopCoroutine(boostingcr);
         }
+        PLAYCLIP("boost", 1f);
         boostingcr = StartCoroutine(getboost());
     }
     /*
@@ -379,6 +395,7 @@ public class balloon_base : MonoBehaviour {
 
     //manage power_ups
     public void pickupPowerup(PowerUp powerup) {
+        PLAYCLIP("pickuppowerup", 1f);
         this.powerup = powerup;
         if (powerup == PowerUp.fire_ball)
         {
@@ -416,6 +433,7 @@ public class balloon_base : MonoBehaviour {
                 //shoot a series of fireballs
                 if (aim_control.ifAim && aim_control.angleSmall)
                 {
+                    PLAYCLIP("fireball", 1f);
                     GameObject fire_bolt = Instantiate(firebolt, transform.position+race_forward*2, spawn.transform.rotation) as GameObject;
                     fire_bolt.GetComponent<DigitalRuby.PyroParticles.FireProjectileScript>().setTarget(aim_control.target);
                     aim_control.ifAim = false;
@@ -428,6 +446,7 @@ public class balloon_base : MonoBehaviour {
                 for (int i = 0; i < 100; i++) {
                     Invoke("suckWave", i / 100f);
                 }
+                PLAYCLIP("blow", 1f);
                 Instantiate(absorb_wave, transform.position, Quaternion.identity);
 
                 powerup = PowerUp.none;
@@ -443,6 +462,8 @@ public class balloon_base : MonoBehaviour {
                 for (int i = 0; i < 100; i++) {
                     Invoke("shockWave", i / 100f);
                 }
+
+                PLAYCLIP("blow", 1f);
                 Instantiate(wind_wave, transform.position, Quaternion.identity);
 
                 powerup = PowerUp.none;
