@@ -2637,7 +2637,7 @@ Transform:
   - {fileID: 552415037}
   - {fileID: 539279642}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!1001 &769239513
 Prefab:
   m_ObjectHideFlags: 0
@@ -5067,6 +5067,10 @@ Prefab:
       propertyPath: m_Name
       value: InviWall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11402732, guid: 4a75dbb595f98314fa3dd848e73fa1b6, type: 2}
+      propertyPath: speed
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a75dbb595f98314fa3dd848e73fa1b6, type: 2}
   m_IsPrefabParent: 0
@@ -6638,7 +6642,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 412606, guid: 4a75dbb595f98314fa3dd848e73fa1b6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -25.6
+      value: -30.8
       objectReference: {fileID: 0}
     - target: {fileID: 412606, guid: 4a75dbb595f98314fa3dd848e73fa1b6, type: 2}
       propertyPath: m_LocalRotation.x
