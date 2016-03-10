@@ -2642,6 +2642,21 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 443812, guid: ca9e18605750e0e4d846d497e68dddf9, type: 2}
   m_PrefabInternal: {fileID: 464385465}
+--- !u!1 &468157902 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 164624, guid: 465e114f65ffebd478f4c958417d1322, type: 2}
+  m_PrefabInternal: {fileID: 1442394900}
+--- !u!114 &468157907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 468157902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1244a16d86ed94abe28357bae3d343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &471551847
 Prefab:
   m_ObjectHideFlags: 0
@@ -7608,6 +7623,22 @@ Prefab:
       propertyPath: camera
       value: 
       objectReference: {fileID: 1614109683}
+    - target: {fileID: 11465550, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: race_forward.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465550, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: race_forward.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465550, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: race_right.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465550, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
+      propertyPath: race_right.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
   m_IsPrefabParent: 0
@@ -10793,7 +10824,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 164624, guid: 465e114f65ffebd478f4c958417d1322, type: 2}
       propertyPath: m_Name
-      value: RallyingBaboon (2)
+      value: RallyingBaboon
       objectReference: {fileID: 0}
     - target: {fileID: 466978, guid: 465e114f65ffebd478f4c958417d1322, type: 2}
       propertyPath: m_LocalScale.z
@@ -10807,6 +10838,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.04859835
       objectReference: {fileID: 0}
+    - target: {fileID: 9507634, guid: 465e114f65ffebd478f4c958417d1322, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 01c6fcd3421c25f46b60e269ac38c31c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 465e114f65ffebd478f4c958417d1322, type: 2}
   m_IsPrefabParent: 0
@@ -11256,7 +11291,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 164624, guid: 465e114f65ffebd478f4c958417d1322, type: 2}
       propertyPath: m_Name
-      value: RallyingBaboon (1)
+      value: RallyingBaboon
       objectReference: {fileID: 0}
     - target: {fileID: 466978, guid: 465e114f65ffebd478f4c958417d1322, type: 2}
       propertyPath: m_LocalScale.x
@@ -11270,6 +11305,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.05142948
       objectReference: {fileID: 0}
+    - target: {fileID: 9507634, guid: 465e114f65ffebd478f4c958417d1322, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 01c6fcd3421c25f46b60e269ac38c31c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 465e114f65ffebd478f4c958417d1322, type: 2}
   m_IsPrefabParent: 0
@@ -14745,6 +14784,21 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 401890, guid: 6a2471ce68ec7594e9fc1fcd1bbc14c6, type: 2}
   m_PrefabInternal: {fileID: 1956478463}
+--- !u!1 &1960443671 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 164624, guid: 465e114f65ffebd478f4c958417d1322, type: 2}
+  m_PrefabInternal: {fileID: 1515918104}
+--- !u!114 &1960443672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1960443671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1244a16d86ed94abe28357bae3d343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1961892747
 Prefab:
   m_ObjectHideFlags: 0

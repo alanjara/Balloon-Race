@@ -47,6 +47,7 @@ public class balloon_base : MonoBehaviour {
     public GameObject powerupUI;
     public Vector3 race_up = new Vector3(0, 1, 0);
     Transform poweruptransform;
+    BalloonBaboon bb;
     public void setControlDirection(Transform setter) {
         race_forward = setter.forward;
         race_right = setter.right;
@@ -137,6 +138,7 @@ public class balloon_base : MonoBehaviour {
 
     IEnumerator dieAnimation() {
         PLAYCLIP("die", 1f);
+        bb.Damaged();
         GameObject g = Instantiate(dangerIcon) as GameObject;
         g.transform.SetParent(UICANVAS.transform);
         Vector3 where = Camera.allCameras[my_number - 1].WorldToScreenPoint(transform.position);
@@ -223,6 +225,7 @@ public class balloon_base : MonoBehaviour {
         speedboost.enableEmission = false;
         size = transform.localScale;
         powerup = PowerUp.fire_ball;
+        bb = transform.FindChild("RallyingBaboon").gameObject.GetComponent<BalloonBaboon>();
 
         StartCoroutine(makepoofs());
         forward_control = race_forward;
@@ -339,6 +342,7 @@ public class balloon_base : MonoBehaviour {
         if (boostingcr != null) {
             StopCoroutine(boostingcr);
         }
+        bb.Crouch();
         PLAYCLIP("boost", 1f);
         boostingcr = StartCoroutine(getboost());
     }
@@ -472,7 +476,7 @@ public class balloon_base : MonoBehaviour {
                 //dont own a powerup
                 break;
         }
-        
+        bb.UsedItem();
         setCorrectPowerupImage();
     }
 }
