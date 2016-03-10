@@ -8568,6 +8568,7 @@ MonoBehaviour:
   RotInXZ: 1
   RotInXY: 0
   RotInZY: 0
+  SLAMTOWN: 0
 --- !u!1 &371880645 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100222, guid: a50c2a69de708b34696660338749e6a1, type: 3}
@@ -13015,9 +13016,9 @@ MonoBehaviour:
   absorb_wave: {fileID: 119664, guid: df2924b2a22d637418f6b1af2cdf5db3, type: 2}
   wind_wave: {fileID: 119664, guid: 7dfdcd251aee5134c9d486599626b867, type: 2}
   my_number: 3
-  verticalThrust: 60
-  horizontalThrust: 20
-  horizontalThrustBoosted: 40
+  verticalThrust: 110
+  horizontalThrust: 80
+  horizontalThrustBoosted: 120
   risingForce: 5
   fire_float: 0
   v: 0
@@ -48644,7 +48645,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 291098363}
   m_Layer: 0
-  m_Name: HotAirBalloon
+  m_Name: AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

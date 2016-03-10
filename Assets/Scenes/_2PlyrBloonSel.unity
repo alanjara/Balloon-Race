@@ -12124,9 +12124,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-<<<<<<< HEAD
---- !u!1 &1793649724
-=======
 --- !u!82 &1790343595
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12202,7 +12199,6 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 0
 --- !u!1 &1808664595
->>>>>>> origin/master
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 130876, guid: 2f2c5dae529321641961f7d04b34df92, type: 2}
