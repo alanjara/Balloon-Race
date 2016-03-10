@@ -5,11 +5,12 @@ public class ThrowFlame : MonoBehaviour {
 
     // Use this for initialization
     public GameObject fire;
-    public const float cooldown = 5f;
+    public float cooldown = 5f;
+    public float start_time = 5f;
     private float timer;
     public GameObject flameStriker;
 	void Start () {
-        timer = cooldown;
+        timer = start_time;
 	}
 	
 	// Update is called once per frame

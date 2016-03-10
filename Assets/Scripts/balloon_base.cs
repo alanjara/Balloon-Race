@@ -221,7 +221,7 @@ public class balloon_base : MonoBehaviour {
         verT = verticalThrust;
         speedboost.enableEmission = false;
         size = transform.localScale;
-        powerup = PowerUp.rocket_boost;
+        powerup = PowerUp.fire_ball;
 
         StartCoroutine(makepoofs());
         forward_control = race_forward;
@@ -451,7 +451,7 @@ public class balloon_base : MonoBehaviour {
                 //dont own a powerup
                 break;
         }
-        
+        powerup = PowerUp.none;
         setCorrectPowerupImage();
     }
 }
