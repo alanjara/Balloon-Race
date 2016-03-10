@@ -9,4 +9,6 @@ public class PersistentGameData {
 	static public int player1balloonColor = 0;//0=red, 1=blue, 2=green, 3=yellow, 4=magenta, 5=cyan, 6=black
 	static public int player2balloonColor = 0;
 	static public int raceWinner = 0;//use this for a race win scene?
+    static public float raceTimer = 0f;
+    static public float raceEndTime = 0f;
 }
