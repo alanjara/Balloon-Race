@@ -225,7 +225,7 @@ public class balloon_base : MonoBehaviour {
         verT = verticalThrust;
         speedboost.enableEmission = false;
         size = transform.localScale;
-        powerup = PowerUp.fire_ball;
+        powerup = PowerUp.rocket_boost;
         bb = transform.FindChild("RallyingBaboon").gameObject.GetComponent<BalloonBaboon>();
 
         StartCoroutine(makepoofs());
