@@ -35,6 +35,9 @@ public class LevelSelectUI : MonoBehaviour {
 
     }
     void LL1() {
+        if(PersistentGameData.numPlayers == 1)
+            SceneManager.LoadScene("GlacierGorge1p");
+        else
         SceneManager.LoadScene("GlacierGorge");
     }
     void loadLevel2() {
@@ -42,13 +45,19 @@ public class LevelSelectUI : MonoBehaviour {
         Invoke("LL2", 4);
     }
     void LL2() {
-        SceneManager.LoadScene("testVol");
+        if (PersistentGameData.numPlayers == 1)
+        SceneManager.LoadScene("testVol1p");
+        else
+            SceneManager.LoadScene("testVol");
     }
     void loadLevel3() {
         Destroy(Invisible_walls);
         Invoke("LL3", 4);
     }
     void LL3() {
-        SceneManager.LoadScene("CityComplete");
+        if (PersistentGameData.numPlayers == 1)
+            SceneManager.LoadScene("CityComplete1p");
+        else
+            SceneManager.LoadScene("CityComplete");
     }
 }

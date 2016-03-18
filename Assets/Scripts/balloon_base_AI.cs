@@ -156,8 +156,9 @@ public class balloon_base_AI : MonoBehaviour {
         life = 1;
         floatForce = risingForce;
         rb = GetComponent<Rigidbody>();
-        horT = horizontalThrust;
+        horT = horizontalThrust + horizontalThrust*PersistentGameData.AIdifficulty;
         verT = verticalThrust;
+        horizontalThrustBoosted += horizontalThrustBoosted * PersistentGameData.AIdifficulty;
         speedboost.enableEmission = false;
         size = transform.localScale;
         powerup = PowerUp.wind_blast;
